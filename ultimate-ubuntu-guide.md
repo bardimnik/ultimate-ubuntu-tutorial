@@ -67,7 +67,7 @@ without pain and tears. That's why I ripped it out. And I recommend you to do th
 
 OK. Here are the steps to reproduce:  
 
-1. Download Ubuntu 16.04 image and create bootable USB stick.
+1. Download Ubuntu 16.04 LTS image and create bootable USB stick.
 2. Go to BIOS and **disable** "Secure Boot" and "Security Chip",**enable** "USB UEFI BIOS Support" and all in "I/O Port Access", also **set** "Legacy Only" boot option.
 3. Boot in "Live Mode" by choosing your bootable media in BIOS.
 4. Now when you are in "Live Mode" run "Gnome Disks utility" or "GParted" to format your SSD with zero-rewriting.
@@ -82,4 +82,4 @@ Clean up and Reboot after command finishes:
 ```
 sudo apt -y autoremove && sudo fstrim --all && sudo reboot now
 ```
-Thats it. Now you have installed and updated Ubuntu ready for configuration and tweaks.
+Thats it. Now you have installed and updated Ubuntu 16.04 LTS ready for configuration and tweaks.
