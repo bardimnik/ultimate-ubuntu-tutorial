@@ -5,7 +5,7 @@ Also additional attention was paid to improve Wi-Fi connection because I use my 
 
 ![Ubuntu on Thinkpad](https://github.com/systematicat/ultimate-ubuntu-tutorial/raw/master/resources/thinkpad.png)
 
-*With small changes you can use this guide for almost any laptop.*  
-*Be careful because you can ruin everything with any of these steps.*  
+This guide is evidence-based and has proof for each of settings mentioned in it.
+Also with small changes you can use this guide for almost any laptop. But be careful because you can ruin everything at any step.   
 
-## [Read now](http://github.com)
+## [Read now](http://github.com) 
