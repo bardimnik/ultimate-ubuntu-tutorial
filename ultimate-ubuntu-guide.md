@@ -1,5 +1,5 @@
 ## Index
-- Introduction 
+- [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
 - Basic OS installation
 - Edit `/etc/fstab` mount options
 - Force automatic SSD TRIM
