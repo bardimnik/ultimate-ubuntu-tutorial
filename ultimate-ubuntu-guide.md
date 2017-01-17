@@ -1,6 +1,6 @@
 ## Index
 - [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
-- Basic OS installation
+- [Basic OS installation](#ubuntu-installation-process)
 - Edit `/etc/fstab` mount options
 - Force automatic SSD TRIM
 - Configure Intel HD graphic
