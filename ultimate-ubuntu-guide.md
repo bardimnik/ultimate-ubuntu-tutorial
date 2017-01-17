@@ -1,7 +1,7 @@
 ## Index
 - [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
 - [Basic OS installation](#ubuntu-installation-process)
-  - Install basic developer packages
+  - [Install basic developer packages](#install-some-basic-developer-whistles)
 - Edit `/etc/fstab` mount options
 - Force automatic SSD TRIM
 - Configure Intel HD graphic
@@ -85,7 +85,7 @@ sudo apt -y autoremove && sudo fstrim --all && sudo reboot now
 ```
 Thats it. Now you have installed and updated Ubuntu 16.04 LTS ready for configuration and tweaks.
 
-## Install some basic developer whistles
+### Install some basic developer whistles
 Run this command:
 ```
 sudo apt -y install autoconf automake build-essential libssl-dev gettext git-core git gitg subversion git-svn checkinstall deborphan wget curl cdbs devscripts dh-make fakeroot check libtool gcc liblzo2-dev g++ libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libxml2-dev unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller genisoimage gtk2-engines-pixbuf gtk2-engines-murrine inkscape libgdk-pixbuf2.0-dev librsvg2-dev libsass0 libxml2-utils pkg-config pysassc libqt4-svg unity-tweak-tool dconf-editor sysfsutils libcurl4-gnutls-dev libexpat1-dev libz-dev
