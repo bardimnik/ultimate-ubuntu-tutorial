@@ -1,0 +1,21 @@
+## Index
+- Introduction 
+- Basic OS installation
+- Edit `/etc/fstab` mount options
+- Force automatic SSD TRIM
+- Configure Intel HD graphic
+- Edit `/etc/default/grub boot` options
+- Reduce system temperature
+- Edit /etc/sysctl.conf
+- Save battery with TLP daemon
+- Wi-Fi speed tweak with REG domain
+- Speed up browsing
+- Use Prelink and Preload
+- Configure Firewall
+- Set back-up daemon
+- Disable unwanted services
+- Fix font-rendering
+- Change GTK theme, icons and cursor
+- Use Powerline for Gnome Terminal
+- Disable guest account
+- Fix bug in Avahi
