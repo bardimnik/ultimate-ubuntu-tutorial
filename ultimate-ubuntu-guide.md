@@ -56,8 +56,8 @@ Here is my current laptop with pretty common configuration:
 - Wi-Fi: Intel 7260 adapter
 
 > **N.B.!**  
-> - *Do not buy current Thinkpads because they are crap*:shit:  
-> - *Do not mess with damned Lenovo who ruin IBM's Thinkpad line*:cry:  
+> - *Do not buy current Thinkpads because they are crap* :shit:  
+> - *Do not mess with damned Lenovo who ruin IBM's Thinkpad line* :cry:  
 
 Also I ripped out that f#ckin useless x240 touchpad and replaced it with touchpad from x250 that have those lovely real
 buttons for using with trackpoint. So I can't tell you how to configure x240 touchpad with those virtual buttons.
@@ -77,7 +77,7 @@ OK. Here are the steps to reproduce:
 ```
 sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 ```
-9. Clean up and Reboot after command finishes:
+Clean up and Reboot after command finishes:
 ```
 sudo apt -y autoremove && sudo fstrim --all && sudo reboot now
 ```
