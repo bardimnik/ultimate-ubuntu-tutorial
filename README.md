@@ -3,8 +3,8 @@
 Main goal of this guide is setting up fast and reliable system fine-tuned for work and fun.  
 Also additional attention was paid to improve Wi-Fi connection because I use my laptop on the road all the time.  
 
-![Ubuntu on Thinkpad](https://github.com/systematicat/ultimate-ubuntu-tutorial/blob/master/resources/thinkpad.png)
+![Ubuntu on Thinkpad](/resources/thinkpad.png)
 
 This guide is evidence-based and has proof for each of settings mentioned in it.
 Also with small changes you can use this guide for almost any laptop. But, as always in Linux, be careful because you can ruin everything at any step.   
-## [Read now](https://github.com/systematicat/ultimate-ubuntu-tutorial/blob/master/ultimate-ubuntu-guide.md) 
+## [Read now](/ultimate-ubuntu-guide.md) 
