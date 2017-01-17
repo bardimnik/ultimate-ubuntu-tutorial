@@ -8,4 +8,4 @@ Also additional attention was paid to improve Wi-Fi connection because I use my 
 This guide is evidence-based and has proof for each of settings mentioned in it.
 Also with small changes you can use this guide for almost any laptop. But, as always in Linux, be careful because you can ruin everything at any step.   
 
-## [Read now](http://github.com) 
+## [Read now](https://github.com/systematicat/ultimate-ubuntu-tutorial/raw/master/ultimate-ubuntu-guide.md) 
