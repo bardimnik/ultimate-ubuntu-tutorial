@@ -94,24 +94,24 @@ I will not explain this step ok? I think you are not so stupid and can read pack
 
 ## Edit `/etc/fstab` mount options
 
-Here we will set mount options for our partitions.
+Here we will set mount options for our partitions.  
 Edit file `/etc/fstab` with your favorite editor and change options line for every partition or BTRFS subvolume:
 ```
 UUID=some_UUID    /        btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@        0    1
 UUID=some_UUID    /home    btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@home    0    2
 ```
-Here we explicitly define the most useful and proper settings for our SSD.
+Here we explicitly define the most useful and proper settings for our SSD.  
 You can read more about BTRFS mount options on [btrfs.wIki.kernel.org](https://btrfs.wiki.kernel.org/index.php/Mount_options)
 
-> **N.B.!**
-> **DO NOT USE** option ***"nodatacow"*** !!!
+> **N.B.!**  
+> **DO NOT USE** option `nodatacow` !
 It is widely recommended over the internet by random idiots but the thruth is - perfomance gained from this option
 is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.
 
-> **DO NOT USE** option ***"nodirtime"***. It is very common in tutorials but you don't need it.
-I thought everybody knew that ***"noatime"*** automatically implements ***"nodirtime"***.
+> **DO NOT USE** option `nodirtime`. It is very common in tutorials but you don't need it.
+I thought everybody knew that `noatime` automatically implements `nodirtime`.
 
-> **DO NOT USE**  *continuous trim* with ***"discard"*** option. This is stupid and will slow down your iops.
+> **DO NOT USE**  "continuous trim" with `discard` option. This is stupid and will slow down your iops.
 Use periodic trim. For example once a week - thats enough for desktop.
 
 > **DO NOT USE** `/tmp`, `/var/log`, e.t.c in `tmpfs` for "prolonging" SSD life. It really doesn't affect SSDs life
@@ -130,7 +130,7 @@ sudo chattr +c /home
 sudo btrfs balance start /
 sudo btrfs balance start /home
 ```
-Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.
+Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.  
 And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-balance) block groups on a BTRFS.
 
 Also because of our `/etc/fstab` config all new files will be compressed and our FS will be defragmented automatically.
@@ -149,4 +149,4 @@ You can do it with this command:
 ```
 sudo chattr +C /some_dir/
 ```
-Be carefull it is **big C** in that command.
+Be carefull - letter `C` is capitalized in that command.
