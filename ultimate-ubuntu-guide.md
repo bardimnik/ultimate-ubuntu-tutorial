@@ -800,3 +800,108 @@ done
 ```
 Read the output. If all is OK you should see Tinos, Arimo and Cousine fonts applied as default fonts.
 That's it! Now we have beautiful crispy fonts!
+
+## Set Google Material GTK theme, icons and cursor
+As a developer I like darkness. Also I like Google Material color palette and I found beautiful GTK theme that uses it.
+Also I found suitable flat icons pack that match this theme. Let's install them:
+```
+sudo add-apt-repository ppa:tista/adapta
+sudo apt update
+sudo apt -y install adapta-gtk-theme
+wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-root.sh | sh
+```
+Now go to Appearance settings in "Unity Tweak Tool" and set theme to "Adapta Nokto" and Icons to "Papirus Dark".
+Also create file `~/.config/gtk-3.0/settings.ini` with this content:
+```
+[Settings]
+gtk-application-prefer-dark-theme=1
+```
+Save, exit, reboot and now you get a fantastic Dark Google Material theme and perfectly matched flat icons in Unity.
+
+Also to make Unity greeter match our theme create file `/usr/share/glib-2.0/schemas/10_unity-greeter.gschema.override` with this content:
+```
+[com.canonical.unity-greeter]
+theme-name='Adapta-Nokto'
+background-color='#455A64'
+icon-theme-name='Papirus-Dark'
+play-ready-sound=false
+draw-grid=false
+font-name='Roboto 10.5'
+```
+Save and exit. Now recompile schema:
+```
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+```
+This will not only make our greeting screen stylish but also it will disable that annoying drum sound at login.
+OK. Let's go deeper.
+
+One more thing is to set some new cursor. I like "Open Zone" cursor.
+Dowload it and unzip - https://dl.opendesktop.org/api/files/download/id/1462316428/111343-OpenZone-1.2.5.tar.xz
+Now choose which version of it you like and copy it to `/usr/share/icons` (I like black slim version).
+Again, go to "Unity Tweak Tool" and set your new cursor.
+Also adjust here Unity Panel color to match our dark theme.
+Beautiful! Do you want more whistles? Ok!
+
+Now we will fix Ubuntu notification bubbles. Run this:
+```
+sudo add-apt-repository ppa:leolik/leolik
+sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
+```
+It will update our `notify-osd`.
+Now create file `~/.notify-osd` with this content:
+```
+slot-allocation = dynamic
+bubble-expire-timeout = 10sec
+bubble-vertical-gap = 70px
+bubble-horizontal-gap = 16px
+bubble-corner-radius = 18px
+bubble-icon-size = 33px
+bubble-gauge-size = 6px
+bubble-width = 240px
+bubble-background-color = 00bcd4
+bubble-background-opacity = 100%
+text-margin-size = 10px
+text-title-size = 100%
+text-title-weight = bold
+text-title-color = ffffff
+text-title-opacity = 100%
+text-body-size = 90%
+text-body-weight = normal
+text-body-color = ffffff
+text-body-opacity = 100%
+text-shadow-opacity = 10%
+location = 1
+bubble-prevent-fade = 0
+bubble-close-on-click = 1
+bubble-as-desktop-bg = 0
+```
+This config will make our notifications beautifully match GTK theme and also
+adds option to close notification bubble by mouse click.
+
+Now restart notify-osd and check if it works by running these commands:
+```
+pkill notify-osd
+notify-send Date "`date`"
+```
+Do you see the magic? That's it!
+
+Also you can change icons in "Unity Tweak Tool", "LibreOffice", "Filezilla" e.t.c just search [Papirus GitHub page](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) for this.
+
+And now we will install patched `sni-qt` to make icons on Unity panel nicer:
+```
+sudo add-apt-repository ppa:andreas-angerer89/sni-qt-patched
+sudo apt update
+sudo apt -y install sni-qt sni-qt:i386 hardcode-tray
+hardcode-tray -ug
+hardcode-tray --conversion-tool Inkscape
+```
+OK. Reboot now and enjoy.
+
+Read more information about these tweaks here:
+[Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)
+[Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )
+[Open Zone cursor theme](https://www.gnome-look.org/p/999999/)
+[Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)
+[Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)
