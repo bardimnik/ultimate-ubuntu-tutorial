@@ -287,3 +287,92 @@ Reboot now.
 > who do all the magic automatically. So our laptop will never fry up. I hope.*
 
 Read about [thermald](https://01.org/linux-thermal-daemon/documentation/introduction-thermal-daemon).
+
+## Adding sysctl parameters
+In simple terms this configuration speeds up disk subsystem, extremely speeds up those slow-and-laggy Wi-Fi connections
+in hotels and airports and defend you from stupid script-kiddies.
+
+Edit file `/etc/sysctl.conf` remove everything it contains and add these lines into it:
+```
+fs.file-max = 655360
+kernel.pid_max = 65535
+kernel.kptr_restrict = 1
+fs.suid_dumpable = 0
+kernel.randomize_va_space = 2
+kernel.msgmnb = 65535
+kernel.msgmax = 65535
+kernel.shmmni = 4096
+vm.swappiness = 0
+vm.vfs_cache_pressure = 50
+vm.dirty_background_ratio = 5
+vm.dirty_ratio = 10
+vm.min_free_kbytes = 131072
+net.ipv4.tcp_congestion_control = westwood
+net.core.somaxconn = 1024
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_rfc1337 = 1
+net.ipv4.route.flush = 1
+net.ipv4.ip_no_pmtu_disc = 0
+net.ipv4.tcp_fastopen = 1
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_fack = 1
+net.ipv4.tcp_ecn = 0
+net.ipv4.tcp_low_latency = 1
+net.ipv4.tcp_frto = 2
+net.core.rmem_max = 8388608
+net.core.wmem_max = 8388608
+net.core.rmem_default = 8388608
+net.core.wmem_default = 8388608
+net.core.optmem_max = 40960
+net.ipv4.tcp_rmem = 4096 87380 8388608
+net.ipv4.tcp_wmem = 4096 65536 8388608
+net.ipv4.ip_local_port_range = 1024 65535
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.default.forwarding = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.icmp_echo_ignore_all = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.tcp_syncookies = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+```
+Save and close this file.
+Now run this command for test and load new settings by running command:
+```
+sudo sysctl -p
+```
+Reboot now.
+
+This settings affect memory allocation, different network parameters, routings and add a little more security
+to network connections.
+
+> **N.B!**  
+> - *Those tweaks are optimized for my situation and may not work properly for you. You must know what are you doing
+> before blindly copy-paste all these settings. Also you must recalculate all the values if you have any other amount
+> of memory rather than 8GB or if you use 1GE wired connection.*
+
+Read [kernel.org](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt), [Wikipedia](http://en.wikipedia.org/wiki/Sysctl) and my [reference sysctl.conf](here will be link to my file) to understand what, where and why.
+
+> **N.B.!**  
+> - *Do not forget to load `tcp_westwood` module and then add it in the startup loading modules in `/etc/modules`.
+
+Also do not forget to disable IPv6 in grub or add these parameters in `/etc/sysctl.conf`:
+```
+net.ipv6.route.flush = 1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+```
