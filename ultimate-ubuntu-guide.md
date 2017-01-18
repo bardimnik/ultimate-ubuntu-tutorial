@@ -254,3 +254,36 @@ Reboot now.
 > - *If you don't really know why you need them do not add any other options from random tutorials in `/etc/default/grub`.
 > Also we don't need any acpi options here because we will force-load `thinkpad_acpi` module and all acpi functions
 > like Fn-kyes will works just fine. Also we don't need any other `i915` options because they are useless.*
+
+## Pay attention to system temperature
+Ok. It's time to think about overheating. First run this:
+```
+sudo apt -y install lm-sensors thermald intel-microcode smartmontools
+sudo service thermald start
+sudo sensors-detect
+```
+When running `sudo sensors-detect` just agree with everything you've been asked.
+After that run this command:
+```
+sudo /etc/init.d/kmod start
+sudo systemctl status thermald.service
+sudo modprobe -v tcp_westwood
+```
+Ok. And now edit file `/etc/modules` and put these lines into it:
+```
+coretemp
+thinkpad_acpi
+tcp_westwood
+```
+At this step we install and start sensors and disk-smart detecting utils, detect all suported sensors in our system
+and load special acpi module for thinkpad laptops.
+Also load `tcp_westwood` module which we will use later for wifi speedups.
+Read about `tcp_westwood` and other congestion controls [here](https://www.hindawi.com/journals/jcnc/2012/806272/) and [there](https://arxiv.org/abs/1212.1621).
+
+Reboot now.
+
+> **N.B.!**  
+> - *Do not use any fan controlling utils (like "thinkfan") because we use special `thermald` daemon
+> who do all the magic automatically. So our laptop will never fry up. I hope.*
+
+Read about [thermald](https://01.org/linux-thermal-daemon/documentation/introduction-thermal-daemon).
