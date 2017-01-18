@@ -570,3 +570,21 @@ After that restart the daemon:
 sudo /etc/init.d/preload restart
 ```
 OK. It is up and running! After some time you will notice some perfomance increasing.
+
+## Enable Firewall
+Yep we need firewall. As we are using laptop then our firewall strategy will be simple:
+*DENY* all incoming, *DENY* and *DISABLE* routing and *ALLOW* all outgoing traffic.
+
+So run this commands:
+```
+sudo apt -y install ufw gufw
+sudo ufw status verbose
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+sudo ufw status verbose
+```
+Ok. Now our firewall is up and enabled.
+Now open "Gufw" utility from dash and check everything.
+Also you can disable logs here. I am pretty sure that you don't really need them.
+That's it!
