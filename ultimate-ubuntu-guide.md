@@ -17,10 +17,9 @@
 - [Disable unwanted services](#disabling-unwanted-services)
 - [Fix font-rendering](#fixing-fonts-rendering)
 - [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)
-- Use Powerline for Gnome Terminal
+- [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
 - Disable guest account
 - Fix bug in Avahi
-- Install Upwork Desktop App
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.
