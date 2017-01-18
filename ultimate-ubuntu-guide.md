@@ -367,7 +367,7 @@ to network connections.
 Read [kernel.org](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt), [Wikipedia](http://en.wikipedia.org/wiki/Sysctl) and my [reference sysctl.conf](here will be link to my file) to understand what, where and why.
 
 > **N.B.!**  
-> - *Do not forget to load `tcp_westwood` module and then add it in the startup loading modules in `/etc/modules`.
+> - *Do not forget to load `tcp_westwood` module and then add it in the startup loading modules in `/etc/modules`.*
 
 Also do not forget to disable IPv6 in grub or add these parameters in `/etc/sysctl.conf`:
 ```
