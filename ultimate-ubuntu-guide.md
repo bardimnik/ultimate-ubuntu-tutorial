@@ -376,3 +376,106 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 ```
+
+## Save battery with TLP daemon
+Now we will install "TLP utility" that will dramatically decrease power consumption and will increase battery-driven working time. And yes it was designed especially for Thinkpads. Absolutely must have!
+
+Even if TLP packages are available via the official Ubuntu repository we want to use PPA for newer versions:
+```
+sudo add-apt-repository ppa:linrunner/tlp
+sudo apt update
+sudo apt -y install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
+```
+Now we need to enable all related services and disable `ondemand` governor because we are using `intel_pstate`:
+```
+sudo systemctl enable tlp.service
+sudo systemctl enable tlp-sleep.service
+sudo systemctl enable NetworkManager-dispatcher.service
+sudo systemctl mask systemd-rfkill.service
+sudo tlp start
+sudo tlp stat
+sudo update-rc.d ondemand disable
+sudo systemctl disable ondemand.service
+sudo systemctl mask ondemand.service
+sudo update-rc.d -f ondemand remove
+```
+Ok. Everything is running. Now we need to fine tune config file `/etc/default/tlp`. Remove all lines in it and add these:
+```
+TLP_ENABLE=1
+TLP_DEFAULT_MODE=AC
+DISK_IDLE_SECS_ON_AC=0
+DISK_IDLE_SECS_ON_BAT=2
+MAX_LOST_WORK_SECS_ON_AC=60
+MAX_LOST_WORK_SECS_ON_BAT=120
+CPU_SCALING_GOVERNOR_ON_AC=performance
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
+CPU_BOOST_ON_AC=1
+CPU_BOOST_ON_BAT=0
+SCHED_POWERSAVE_ON_AC=0
+SCHED_POWERSAVE_ON_BAT=1
+NMI_WATCHDOG=0
+ENERGY_PERF_POLICY_ON_AC=performance
+ENERGY_PERF_POLICY_ON_BAT=powersave
+DISK_DEVICES="sda"
+DISK_APM_LEVEL_ON_AC="254 254"
+DISK_APM_LEVEL_ON_BAT="128 128"
+SATA_LINKPWR_ON_AC=max_performance
+SATA_LINKPWR_ON_BAT=min_power
+AHCI_RUNTIME_PM_TIMEOUT=15
+PCIE_ASPM_ON_AC=performance
+PCIE_ASPM_ON_BAT=powersave
+WIFI_PWR_ON_AC=off
+WIFI_PWR_ON_BAT=on
+WOL_DISABLE=Y
+SOUND_POWER_SAVE_ON_AC=0
+SOUND_POWER_SAVE_ON_BAT=1
+SOUND_POWER_SAVE_CONTROLLER=Y
+BAY_POWEROFF_ON_BAT=0
+BAY_DEVICE="sr0"
+RUNTIME_PM_ON_AC=on
+RUNTIME_PM_ON_BAT=auto
+RUNTIME_PM_ALL=1
+USB_AUTOSUSPEND=1
+RESTORE_DEVICE_STATE_ON_STARTUP=1
+START_CHARGE_THRESH_BAT0=75
+STOP_CHARGE_THRESH_BAT0=85
+START_CHARGE_THRESH_BAT1=77
+STOP_CHARGE_THRESH_BAT1=87
+DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi"
+DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi"
+```
+Save and exit.
+These settings will enable power-saving functions for CPU, SSD, Wi-Fi adapter and Sounblaster.
+Also it will set battery charging thresholds to save our battery life-cycle and minimize wearing.
+And also it will automatically switch on/off WIFI when we will connect/disconnect LAN wire.
+
+Run these commands while on charger:
+```
+sudo tlp start
+sudo tlp stat
+sudo tlp-stat -w
+sudo tlp setcharge 75 85 BAT0
+sudo tlp setcharge 77 87 BAT1
+```
+And now using laptop battery run these:
+```
+sudo tlp start
+sudo tlp stat
+sudo tlp-stat -w
+```
+Read all the outputs and check if perfomance/power-save switching works. Also check if your governor is `intel_pstate`
+and that TLP knows about it.
+
+Reboot and charge your battery with full factory thresholds last time:
+```
+sudo tlp fullcharge BAT0
+sudo tlp fullcharge BAT1
+```
+All next charges will be battery-life-optimized by TLP.
+Read for more information [here](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html) and [there](https://github.com/linrunner/TLP/issues/183#issuecomment-175228097)
+
+> **N.B.!**  
+> - *Once after kernel updated I saw a strange thing when TLP stops working. So now just in case after every new kernel update I simply reinstall all TLP-related stuff with this command:*
+```
+sudo apt install --reinstall tlp tlp-rdw tp-smapi-dkms acpi-call-dkms lm-sensors thermald intel-microcode smartmontools
+```
