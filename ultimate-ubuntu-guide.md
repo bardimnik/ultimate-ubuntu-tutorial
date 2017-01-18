@@ -11,7 +11,7 @@
 - [Save battery with TLP daemon](#save-battery-with-tlp-daemon)
 - [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)
 - [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)
-- Use Prelink and Preload
+- [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)
 - Configure Firewall
 - Set back-up daemon
 - Disable unwanted services
