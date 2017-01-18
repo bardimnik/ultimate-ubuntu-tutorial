@@ -588,3 +588,11 @@ Ok. Now our firewall is up and enabled.
 Now open "Gufw" utility from dash and check everything.
 Also you can disable logs here. I am pretty sure that you don't really need them.
 That's it!
+
+## Use Déjà Dup for simple diff-backups
+Déjà Dup is a simple backup tool. It hides the complexity of backing up the
+"Right Way" (encrypted, off-site, and regular) and uses `duplicity` as the back-end.
+
+It is nicely integrated in Ubuntu and Nautilus and runs smooth.
+Just don't forget to config it properly. And also you can edit more parameters of it in dconf-editor by opening
+this path `org.gnome.DejaDup`. Here you can set custom periods of back-ups or set on-line storage.
