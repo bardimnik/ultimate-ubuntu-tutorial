@@ -69,7 +69,7 @@ without pain and tears. That's why I ripped it out. And I recommend you to do th
 OK. Here are the steps to reproduce:  
 
 1. Download Ubuntu 16.04 LTS image and create bootable USB stick.
-2. Go to BIOS and **disable** "Secure Boot" and "Security Chip",**enable** "USB UEFI BIOS Support" and all in "I/O Port Access", also **set** "Legacy Only" boot option.
+2. Go to BIOS and **disable** "Secure Boot" and "Security Chip", **enable** "USB UEFI BIOS Support" and all in "I/O Port Access", also **set** "Legacy Only" boot option.
 3. Boot in "Live Mode" by choosing your bootable media in BIOS.
 4. Now when you are in "Live Mode" run "Gnome Disks utility" or "GParted" to format your SSD with zero-rewriting.
 5. Run Ubuntu installer and when it will ask you about your target disk for installation choose "Manual Partitioning" option and create the **only one** partition with BTRFS file system and root mount-point (`/`). It will automatically create BTRFS subvolumes `@/` and `@home` which is useful.
