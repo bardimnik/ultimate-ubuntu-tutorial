@@ -14,7 +14,7 @@
 - [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)
 - [Configure Firewall](#enable-firewall)
 - [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)
-- Disable unwanted services
+- [Disable unwanted services](#disabling-unwanted-services)
 - Fix font-rendering
 - Change GTK theme, icons and cursor
 - Use Powerline for Gnome Terminal
