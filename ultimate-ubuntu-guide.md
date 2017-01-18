@@ -7,7 +7,7 @@
 - [Configure Intel HD graphic](#configure-intel-hd-graphic)
 - [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)
 - [Reduce system temperature](#pay-attention-to-system-temperature)
-- Edit `/etc/sysctl.conf`
+- [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)
 - Save battery with TLP daemon
 - Wi-Fi speed tweak with REG domain
 - Speed up browsing
