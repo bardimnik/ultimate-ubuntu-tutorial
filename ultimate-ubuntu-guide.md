@@ -8,7 +8,7 @@
 - [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)
 - [Reduce system temperature](#pay-attention-to-system-temperature)
 - [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)
-- Save battery with TLP daemon
+- [Save battery with TLP daemon](#save-battery-with-tlp-daemon)
 - Wi-Fi speed tweak with REG domain
 - Speed up browsing
 - Use Prelink and Preload
