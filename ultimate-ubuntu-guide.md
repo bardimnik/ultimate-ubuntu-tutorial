@@ -899,7 +899,7 @@ hardcode-tray --conversion-tool Inkscape
 ```
 OK. Reboot now and enjoy.
 
-Read more information about these tweaks here:
+Read more information about these tweaks here:  
 [Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)  
 [Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )  
 [Open Zone cursor theme](https://www.gnome-look.org/p/999999/)  
