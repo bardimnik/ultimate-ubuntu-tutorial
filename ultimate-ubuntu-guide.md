@@ -503,3 +503,46 @@ Reboot and check if it works:
 sudo iw reg get
 ```
 Easy-peasy! Enjoy!
+
+## Speed up browsing with "profile-sync-daemon"
+Recent browsers are hungry fat pigs. They can eat all your memory and shit out all your disk.
+So using this small helpful daemon is absolutely must!
+It is tiny pseudo-daemon designed to manage browser profile(s) in tmpfs and to periodically sync back
+to the physical disc (HDD/SSD). This is accomplished by an innovative use of rsync to maintain synchronization between
+a tmpfs copy and media-bound backup of the browser profile(s). Additionally, `psd` features several
+crash recovery features. Since we have enough memory let's use it!
+
+We need to add PPA and install daemon:
+```
+sudo add-apt-repository ppa:graysky/utils
+sudo apt update
+sudo apt -y install profile-sync-daemon
+```
+Run psd the first time which will create `$XDG_CONFIG_HOME/psd/psd.conf`:
+```
+psd
+```
+Now uncomment and edit these lines in config file `/home/user_name/.config/psd/psd.conf`:
+```
+USE_OVERLAYFS="yes"
+BROWSERS="google-chrome" # set here you browser name from list
+USE_BACKUPS="yes"
+```
+Save and exit.
+Now parse config file:
+```
+psd p
+```
+To use overlayfs feature we need to add this line in `/etc/sudoers`:
+```
+your_username_here ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
+```
+And run `psd p` command one more time.
+Now enable daemon:
+```
+systemctl --user start psd
+systemctl --user enable psd
+```
+Reboot and check if it works with `psd p` command.
+This daemon will speed up browsing by keeping browser profile in memory.
+Additional reading is in famous [Arch Wiki](https://wiki.archlinux.org/index.php/profile-sync-daemon)
