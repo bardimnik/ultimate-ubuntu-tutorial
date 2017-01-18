@@ -104,7 +104,7 @@ Here we explicitly define the most useful and proper settings for our SSD.
 You can read more about BTRFS mount options on [btrfs.wIki.kernel.org](https://btrfs.wiki.kernel.org/index.php/Mount_options)
 
 > **N.B.!**  
-> **DO NOT USE** option `nodatacow` !
+> **DO NOT USE** option `nodatacow`!
 It is widely recommended over the internet by random idiots but the thruth is - perfomance gained from this option
 is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.
 
@@ -143,7 +143,7 @@ Reboot again.
 
 > **N.B.!**
 > Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
-> and/or files with heavy R-W usage such as `virtual machine catalog` or catalog/files that you share via torrents.
+> and/or files with heavy R-W usage such as catalog with virtual machines images or catalog/files that you share via torrents.
 
 You can do it with this command:
 ```
