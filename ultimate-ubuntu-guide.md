@@ -3,7 +3,7 @@
 - [Basic OS installation](#ubuntu-installation-process)
   - [Install basic developer packages](#install-some-basic-developer-whistles)
 - [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)
-- Force automatic SSD TRIM
+- [Force automatic SSD TRIM](#force-automatic-trim-for-ssd)
 - Configure Intel HD graphic
 - Edit `/etc/default/grub boot` options
 - Reduce system temperature
