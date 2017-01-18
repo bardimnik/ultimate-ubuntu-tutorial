@@ -10,7 +10,7 @@
 - [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)
 - [Save battery with TLP daemon](#save-battery-with-tlp-daemon)
 - [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)
-- Speed up browsing
+- [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)
 - Use Prelink and Preload
 - Configure Firewall
 - Set back-up daemon
