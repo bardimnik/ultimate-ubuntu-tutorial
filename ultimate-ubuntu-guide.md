@@ -5,7 +5,7 @@
 - [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)
 - [Force automatic SSD TRIM](#force-automatic-trim-for-ssd)
 - [Configure Intel HD graphic](#configure-intel-hd-graphic)
-- Edit `/etc/default/grub boot` options
+- [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)
 - Reduce system temperature
 - Edit `/etc/sysctl.conf`
 - Save battery with TLP daemon
@@ -242,7 +242,7 @@ GRUB_CMDLINE_LINUX="scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y"
 This options will enable implementation of the new I/O block layer Multi-queue model.
 It's better than default "Deadline" scheduler.
 
-Read this [article of new scheduler.](https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq))
+Read this [article about this scheduler.](https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq))
 
 After all changes update grub records by this command:
 ```
