@@ -13,7 +13,7 @@
 - [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)
 - [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)
 - [Configure Firewall](#enable-firewall)
-- Set back-up daemon
+- [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)
 - Disable unwanted services
 - Fix font-rendering
 - Change GTK theme, icons and cursor
