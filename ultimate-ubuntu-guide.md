@@ -12,7 +12,7 @@
 - [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)
 - [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)
 - [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)
-- Configure Firewall
+- [Configure Firewall](#enable-firewall)
 - Set back-up daemon
 - Disable unwanted services
 - Fix font-rendering
