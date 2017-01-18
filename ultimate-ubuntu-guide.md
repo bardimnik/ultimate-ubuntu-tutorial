@@ -905,3 +905,54 @@ Read more information about these tweaks here:
 [Open Zone cursor theme](https://www.gnome-look.org/p/999999/)  
 [Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)  
 [Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)  
+
+## Powerline for Gnome Terminal
+Powerline is a statusline plug-in for vim, and provides statuslines and prompts for several other applications,
+including zsh, bash, tmux, IPython, Awesome and Qtile.
+
+Run this to install patched-for-powerline fonts:
+```
+git clone https://github.com/powerline/fonts.git
+cd fonts/
+sudo ./install.sh
+```
+Now set in "Unity Tweak Tool" Roboto Mono for Powerline font with size 10.5 for monospaced fonts.
+Or set it in Gnome Terminal Profile settings.
+
+Next run:
+```
+sudo apt -y install powerline
+```
+
+Add these lines to your `~/.bash.rc`:
+```bash
+force_color_prompt=yes
+
+if [ "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
+if [ -f `which powerline-daemon` ]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    . /usr/share/powerline/bindings/bash/powerline.sh
+fi
+```
+And at last run this:
+```
+mkdir -p ~/.config/powerline
+cat <<-'EOF' > ~/.config/powerline/config.json
+{
+    "ext": {
+        "shell": {
+            "theme": "default_leftonly"
+        }
+    }
+}
+EOF
+powerline-daemon --replace
+```
+OK. Now it is properly set up.
+Close and open again terminal and try to edit some git branch in terminal and you will see the magic!
+More information on [Powerline GitHub page](https://github.com/powerline/powerline) and in [documentation](https://powerline.readthedocs.io/en/master/overview.html)
