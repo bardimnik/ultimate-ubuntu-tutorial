@@ -652,3 +652,151 @@ it will make our OS unstable and useless (more than now). So give your memory to
 > - *You can kill a lot of junk services. Just read about them find their functions and dependencies and
 > if you don't want it you kill it. Actually I always disable and remove Zeitgeist, Avahi, AppArmor, Snap, Evolution
 > and most of the preinstalled bloat-ware because I am sure that I don't need them.*
+
+## Fixing fonts rendering
+If you hate default fat Ubuntu fonts and how they render this part is for you!
+
+> **N.B.!**  
+> - *Do not use "infinality patch" for font rendering. It's abandoned and deprecated.
+> And it surely will kill all letters geometry. Actually I am completely don't understand why this stupid *infinality patch* was so popular.*
+
+Because my laptop has only 12.5" low-quality screen I will use Roboto hinted fonts for everything and
+set Chrome OS like font rendering. I found that it is nice for my eyes and save space on a such micro-screen.
+
+First we must install new fonts:
+```
+sudo apt -y install fonts-croscore fonts-roboto-hinted ttf-mscorefonts-installer
+```
+After installation set all fonts in "Unity Tweak Tool" to Roboto at 10.5 size.
+Also set Roboto Bold 10.5 for window heading.
+
+Now open Google Chrome (the only one browser for Linux that doesn't suck), go to Settings and change fonts in it.
+From up to down:
+```
+Tinos
+Tinos
+Arimo
+Cousine
+```
+All at 16 size. OK. Close it.
+
+Now we will fix the rendering.
+Create two files: `~/.Xdefaults` and `~/.Xresources` with the same content:
+```
+Xft.antialias: 1
+Xft.autohint:  0
+Xft.hinting:   1
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
+```
+
+Next create files: `~/.fonts.conf`, `~/.fonts/fonts.conf` and  `~/.config/fontconfig/fonts.conf` with the same content:
+```
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+<!-- Set preferred serif, sans serif, and monospace fonts. -->
+<alias>
+<family>serif</family>
+<prefer><family>Tinos</family></prefer>
+</alias>
+<alias>
+<family>sans-serif</family>
+<prefer><family>Arimo</family></prefer>
+</alias>
+<alias>
+<family>sans</family>
+<prefer><family>Arimo</family></prefer>
+</alias>
+<alias>
+<family>monospace</family>
+<prefer><family>Cousine</family></prefer>
+</alias>
+<!-- Aliases for commonly used MS fonts. -->
+<match>
+<test name="family"><string>Arial</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Arimo</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Helvetica</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Arimo</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Verdana</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Arimo</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Tahoma</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Arimo</string>
+</edit>
+</match>
+<match>
+<!-- Insert some stupid joke here -->
+<test name="family"><string>Comic Sans MS</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Arimo</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Times New Roman</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Tinos</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Times</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Tinos</string>
+</edit>
+</match>
+<match>
+<test name="family"><string>Courier New</string></test>
+<edit name="family" mode="assign" binding="strong">
+<string>Cousine</string>
+</edit>
+</match>
+<!-- Improve font rendering -->
+<match target="font">
+<edit name="antialias" mode="assign">
+<bool>true</bool>
+</edit>
+<edit name="autohint" mode="assign">
+<bool>false</bool>
+</edit>
+<edit name="embeddedbitmap" mode="assign">
+<bool>false</bool>
+</edit>
+<edit name="hinting" mode="assign">
+<bool>true</bool>
+</edit>
+<edit name="hintstyle" mode="assign">
+<const>hintslight</const>
+</edit>
+<edit name="lcdfilter" mode="assign">
+<const>lcddefault</const>
+</edit>
+<edit name="rgba" mode="assign">
+<const>rgb</const>
+</edit>
+</match>
+</fontconfig>
+```
+Ok. Save, exit and reboot.
+
+Now check if everything works, run this:
+```
+for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
+    echo -n "$family: "
+    fc-match "$family"
+done
+```
+Read the output. If all is OK you should see Tinos, Arimo and Cousine fonts applied as default fonts.
+That's it! Now we have beautiful crispy fonts!
