@@ -91,3 +91,62 @@ Run this command:
 sudo apt -y install autoconf automake build-essential libssl-dev gettext git-core git gitg subversion git-svn checkinstall deborphan wget curl cdbs devscripts dh-make fakeroot check libtool gcc liblzo2-dev g++ libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libxml2-dev unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller genisoimage gtk2-engines-pixbuf gtk2-engines-murrine inkscape libgdk-pixbuf2.0-dev librsvg2-dev libsass0 libxml2-utils pkg-config pysassc libqt4-svg unity-tweak-tool dconf-editor sysfsutils libcurl4-gnutls-dev libexpat1-dev libz-dev
 ```
 I will not explain this step ok? I think you are not so stupid and can read packages names.
+
+## Edit `/etc/fstab` mount options
+
+Here we will set mount options for our partitions.
+Edit file `/etc/fstab` with your favorite editor and change options line for every partition or BTRFS subvolume:
+```
+UUID=some_UUID    /        btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@        0    1
+UUID=some_UUID    /home    btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@home    0    2
+```
+Here we explicitly define the most useful and proper settings for our SSD.
+You can read more about BTRFS mount options on [btrfs.wIki.kernel.org](https://btrfs.wiki.kernel.org/index.php/Mount_options)
+
+> **N.B.!**
+> **DO NOT USE** option ***"nodatacow"*** !!!
+It is widely recommended over the internet by random idiots but the thruth is - perfomance gained from this option
+is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.
+
+> **DO NOT USE** option ***"nodirtime"***. It is very common in tutorials but you don't need it.
+I thought everybody knew that ***"noatime"*** automatically implements ***"nodirtime"***.
+
+> **DO NOT USE**  *continuous trim* with ***"discard"*** option. This is stupid and will slow down your iops.
+Use periodic trim. For example once a week - thats enough for desktop.
+
+> **DO NOT USE** `/tmp`, `/var/log`, e.t.c in `tmpfs` for "prolonging" SSD life. It really doesn't affect SSDs life
+but can cause you a lot of problems with some applications.
+
+Save and reboot when you'll be done.
+
+After that run this commands:
+```
+sudo btrfs property set / compression lzo
+sudo btrfs property set /home compression lzo
+sudo btrfs filesystem defragment -r -v -clzo /
+sudo chattr +c /
+sudo btrfs filesystem defragment -r -v -clzo /home
+sudo chattr +c /home
+sudo btrfs balance start /
+sudo btrfs balance start /home
+```
+Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.
+And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-balance) block groups on a BTRFS.
+
+Also because of our `/etc/fstab` config all new files will be compressed and our FS will be defragmented automatically.
+
+> **N.B.!**
+> **DO NOT FORGET** to turn on `write cache feature` in "Gnome Disks utility".
+> Just go to your SSD settings in this utility and turn on this feature.
+
+Reboot again.
+
+> **N.B.!**
+> Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
+> and/or files with heavy R-W usage such as `virtual machine catalog` or catalog/files that you share via torrents.
+
+You can do it with this command:
+```
+sudo chattr +C /some_dir/
+```
+Be carefull it is **big C** in that command.
