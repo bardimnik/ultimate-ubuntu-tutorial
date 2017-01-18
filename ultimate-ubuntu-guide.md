@@ -217,3 +217,40 @@ about difference between "DRI2" and "DRI3" performance.
 > - *Do not use any PPAs with graphic drivers like Oibaf's or Xorg-edgers.
 > We have already installed all we need for graphics.
 > And any updates will come to our system directly from official Intel repository.*
+
+## Edit /etc/default/grub for kernel options
+Open file `/etc/default/grub` and change kernel boot options line:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=enable pcie_aspm=force i915.semaphores=1 i915.i915_enable_rc6=7 i915.i915_enable_fbc=1 i915.lvds_downclock=1 drm.vblankoffdelay=1 ipv6.disable=1"
+```
+Here we explicitly set CPU governor to `intel_pstate` and set kernel options for Intel graphics that will increase FPS
+and decrease power consumption.  
+And also we explicitly disable IPv6 because it's a big security mess right now.
+Don't use it while community is thinking how to secure this back-door.
+
+Read this [article with test of different kernel options and battery draining.](https://www.phoronix.com/scan.php?page=article&item=intel_i915_power&num=1)
+
+> **N.B.!**  
+> - *Diverting from the defaults will mark the kernel as tainted from Linux 3.18 onwards.
+> This basically implies using other options than the per-chip defaults is considered experimental
+> and not supported by the developers. But that's OK for us. Forget about it.*
+
+Also change this line in `/etc/default/grub`:
+```
+GRUB_CMDLINE_LINUX="scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y"
+```
+This options will enable implementation of the new I/O block layer Multi-queue model.
+It's better than default "Deadline" scheduler.
+
+Read this [article of new scheduler.](https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq))
+
+After all changes update grub records by this command:
+```
+sudo update-grub
+```
+Reboot now.
+
+> **N.B.!**  
+> - *If you don't really know why you need them do not add any other options from random tutorials in `/etc/default/grub`.
+> Also we don't need any acpi options here because we will force-load `thinkpad_acpi` module and all acpi functions
+> like Fn-kyes will works just fine. Also we don't need any other `i915` options because they are useless.*
