@@ -218,7 +218,7 @@ about difference between "DRI2" and "DRI3" performance.
 > We have already installed all we need for graphics.
 > And any updates will come to our system directly from official Intel repository.*
 
-## Edit /etc/default/grub for kernel options
+## Edit `/etc/default/grub` for kernel options
 Open file `/etc/default/grub` and change kernel boot options line:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=enable pcie_aspm=force i915.semaphores=1 i915.i915_enable_rc6=7 i915.i915_enable_fbc=1 i915.lvds_downclock=1 drm.vblankoffdelay=1 ipv6.disable=1"
