@@ -6,7 +6,7 @@
 - [Force automatic SSD TRIM](#force-automatic-trim-for-ssd)
 - [Configure Intel HD graphic](#configure-intel-hd-graphic)
 - [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)
-- Reduce system temperature
+- [Reduce system temperature](#pay-attention-to-system-temperature)
 - Edit `/etc/sysctl.conf`
 - Save battery with TLP daemon
 - Wi-Fi speed tweak with REG domain
