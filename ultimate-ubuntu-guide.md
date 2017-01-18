@@ -171,3 +171,49 @@ sudo systemctl enable fstrim.service
 ```
 Since now once a week our SSD will be trimmed automatically.
 We can forget about this task and live our life.
+
+## Configure Intel HD graphic
+Since we use Ubuntu on desktop we need smooth and tearing-free graphic experience.
+
+Let's tune it. Start with this command:
+```
+sudo apt -y install gksu policykit-1 gdebi mesa-utils
+```
+Ok. Now dowload [Intel Graphics Update Tool for Linux](https://download.01.org/gfx/ubuntu/16.04/main/pool/main/i/intel-graphics-update-tool/intel-graphics-update-tool_2.0.2_amd64.deb) and install it using "GDebi" installer which will automatically fix and resolve all depencies.  
+Next run "Intel Graphics Update Tool" from Ubuntu app menu and install graphics stack.  
+Reboot after that.  
+
+Next create this catalog and file:
+```
+sudo mkdir /etc/X11/xorg.conf.d/
+sudo nano /etc/X11/xorg.conf.d/20-intel.conf
+```
+Put all these lines into this file:
+```
+Section "Device"
+    Identifier    "Intel Graphics"
+    Driver        "intel"
+    Option        "AccelMethod"    "sna"
+    Option        "TearFree"       "true"
+    Option        "DRI"            "3"
+EndSection
+```
+Save it and reboot.
+
+Now check if it works by reading output of these commands:
+```
+cat /var/log/Xorg.0.log | grep sna
+cat /var/log/Xorg.0.log | grep Tear
+cat /var/log/Xorg.0.log | grep DRI
+glxinfo | grep rendering
+```
+This configuration will force "SNA rendering" and "TearFree option" for our Intel HD graphics card. In other words it forces the use of hardware rendering.  
+So these settings will help us to run extremely smoooooooth video playback and animations in Unity GUI.
+Also we enable "DRI3" infrastructure becauses it works faster.
+Read this [article at Phoronix](http://www.phoronix.com/scan.php?page=article&item=intel-skylake-dri3&num=1)
+about difference between "DRI2" and "DRI3" performance.
+
+> **N.B.!**  
+> - *Do not use any PPAs with graphic drivers like Oibaf's or Xorg-edgers.
+> We have already installed all we need for graphics.
+> And any updates will come to our system directly from official Intel repository.*
