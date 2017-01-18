@@ -968,3 +968,16 @@ allow-guest=false
 ```
 Save and Exit.
 That’s it. You won’t see the Guest Account any more.
+
+## Fix stupid bug in Avahi
+Avahi itself is a stupid trying to implement zeroconf. If you use your laptop on the road most of the time purge Avahi.
+Avahi uses a .local zones and this can cause problems with different network application.
+For example it can "accidentally" block the ose of torrent retrackers. Nice huh?
+Also it can slowdown the network connection.
+
+Edit the file `/etc/nsswitch.conf` and change this line by removing some words:
+```
+hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4 #change this line
+hosts: files dns #to this
+```
+OK. Save, close, reboot, enjoy!
