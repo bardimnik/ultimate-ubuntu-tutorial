@@ -142,7 +142,7 @@ Also because of our `/etc/fstab` config all new files will be compressed and our
 Reboot again.
 
 > **N.B.!**  
-> - * Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
+> - *Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
 > and/or files with heavy R-W usage such as catalog with virtual machines images or catalog/files that you share via torrents.*
 
 You can do it with this command:
