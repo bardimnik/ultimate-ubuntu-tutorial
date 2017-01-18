@@ -15,7 +15,7 @@
 - [Configure Firewall](#enable-firewall)
 - [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)
 - [Disable unwanted services](#disabling-unwanted-services)
-- [Fix font-rendering](fixing-fonts-rendering)
+- [Fix font-rendering](#fixing-fonts-rendering)
 - Change GTK theme, icons and cursor
 - Use Powerline for Gnome Terminal
 - Disable guest account
