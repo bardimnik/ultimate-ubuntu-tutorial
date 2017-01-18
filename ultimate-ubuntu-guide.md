@@ -479,3 +479,27 @@ Read for more information [here](http://linrunner.de/en/tlp/docs/tlp-linux-advan
 ```
 sudo apt install --reinstall tlp tlp-rdw tp-smapi-dkms acpi-call-dkms lm-sensors thermald intel-microcode smartmontools
 ```
+
+## Additional Wi-Fi speed tweak by setting REG domain
+> **N.B.!**  
+> - *This dirty hack can be illegal in your country. But who cares right?*
+
+This hack will tell your Wi-Fi adapter that he is on vacation in Venezuela (the most free country ha-ha) and thats why
+he must increase `tx_power` of adapter in 2402MHz-2482MHz range.
+
+Viva la poor Venezuela radio regulation!
+
+Run these commands:
+```
+sudo iw reg get
+sudo iw reg set VE
+```
+Now edit this file `/etc/default/crda` and set our new reg domain:
+```
+REGDOMAIN=VE
+```
+Reboot and check if it works:
+```
+sudo iw reg get
+```
+Easy-peasy! Enjoy!
