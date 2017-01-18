@@ -2,7 +2,7 @@
 - [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
 - [Basic OS installation](#ubuntu-installation-process)
   - [Install basic developer packages](#install-some-basic-developer-whistles)
-- Edit `/etc/fstab` mount options
+- [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)
 - Force automatic SSD TRIM
 - Configure Intel HD graphic
 - Edit `/etc/default/grub boot` options
@@ -104,18 +104,18 @@ Here we explicitly define the most useful and proper settings for our SSD.
 You can read more about BTRFS mount options on [btrfs.wIki.kernel.org](https://btrfs.wiki.kernel.org/index.php/Mount_options)
 
 > **N.B.!**  
-> **DO NOT USE** option `nodatacow`!
+> - *Do not use option `nodatacow`!
 It is widely recommended over the internet by random idiots but the thruth is - perfomance gained from this option
-is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.
+is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.*
 
-> **DO NOT USE** option `nodirtime`. It is very common in tutorials but you don't need it.
-I thought everybody knew that `noatime` automatically implements `nodirtime`.
+> - *Do not use option `nodirtime`. It is very common in tutorials but you don't need it.
+I thought everybody knew that `noatime` automatically implements `nodirtime`.*
 
-> **DO NOT USE**  "continuous trim" with `discard` option. This is stupid and will slow down your iops.
-Use periodic trim. For example once a week - thats enough for desktop.
+> - *Do not use  "continuous trim" with `discard` option. This is stupid and will slow down your iops.
+Use periodic trim. For example once a week - thats enough for desktop.*
 
-> **DO NOT USE** `/tmp`, `/var/log`, e.t.c in `tmpfs` for "prolonging" SSD life. It really doesn't affect SSDs life
-but can cause you a lot of problems with some applications.
+> - *Do not use `/tmp`, `/var/log`, e.t.c in `tmpfs` for "prolonging" SSD life. It really doesn't affect SSDs life
+but can cause you a lot of problems with some applications.*
 
 Save and reboot when you'll be done.
 
@@ -135,15 +135,15 @@ And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/bt
 
 Also because of our `/etc/fstab` config all new files will be compressed and our FS will be defragmented automatically.
 
-> **N.B.!**
-> **DO NOT FORGET** to turn on `write cache feature` in "Gnome Disks utility".
-> Just go to your SSD settings in this utility and turn on this feature.
+> **N.B.!**  
+> - *Do not forget to turn on `write cache feature` in "Gnome Disks utility".
+> Just go to your SSD settings in this utility and turn on this feature.*
 
 Reboot again.
 
-> **N.B.!**
-> Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
-> and/or files with heavy R-W usage such as catalog with virtual machines images or catalog/files that you share via torrents.
+> **N.B.!**  
+> -* Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
+> and/or files with heavy R-W usage such as catalog with virtual machines images or catalog/files that you share via torrents.*
 
 You can do it with this command:
 ```
