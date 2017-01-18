@@ -19,7 +19,7 @@
 - [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)
 - [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
 - [Disable guest account](#disable-guest-account)
-- Fix bug in Avahi
+- [Fix bug in Avahi](#fix-stupid-bug-in-avahi)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.
@@ -970,8 +970,8 @@ Save and Exit.
 That’s it. You won’t see the Guest Account any more.
 
 ## Fix stupid bug in Avahi
-Avahi itself is a stupid trying to implement zeroconf. If you use your laptop on the road most of the time purge Avahi.
-Avahi uses a .local zones and this can cause problems with different network application.
+Avahi itself is a stupid trying to implement zeroconf. If you use your laptop on the road most of the time just purge Avahi.
+Avahi uses a `.local` zones and this can cause problems with different network application.
 For example it can "accidentally" block the ose of torrent retrackers. Nice huh?
 Also it can slowdown the network connection.
 
