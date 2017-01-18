@@ -546,3 +546,27 @@ systemctl --user enable psd
 Reboot and check if it works with `psd p` command.
 This daemon will speed up browsing by keeping browser profile in memory.
 Additional reading is in famous [Arch Wiki](https://wiki.archlinux.org/index.php/profile-sync-daemon)
+
+## Using Prelink and Preload for system speed ups
+Ok. First - **DO NOT USE PRELINK! NEVER!**
+Neither on desktop nor on server.
+It is useless and deprecated. It gains no speedups on modern hardware but can cause a lot of problems.
+Read this [discussion](https://pagure.io/fesco/issue/1183).
+
+But we still can use preload daemon.
+It is a tool that monitors and keeps a history of the user's most frequently used applications and the files
+that those applications load upon their execution. And based on that data, it then tries to guess what app the user
+will be most likely to open in the near future and then loads that data from the disk to the page cache,
+before they're requested. In plain simple terms - once preload is installed, after a while you should be able to open
+your frequently used applications much faster. Sounds good right?
+
+Install it:
+```
+sudo apt -y install preload
+```
+Now edit parameter "sortstrategy" in `/etc/preload.conf`, set it to "0" because we use SSD.
+After that restart the daemon:
+```
+sudo /etc/init.d/preload restart
+```
+OK. It is up and running! After some time you will notice some perfomance increasing.
