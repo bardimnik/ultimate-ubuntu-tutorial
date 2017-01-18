@@ -9,7 +9,7 @@
 - [Reduce system temperature](#pay-attention-to-system-temperature)
 - [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)
 - [Save battery with TLP daemon](#save-battery-with-tlp-daemon)
-- Wi-Fi speed tweak with REG domain
+- [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)
 - Speed up browsing
 - Use Prelink and Preload
 - Configure Firewall
