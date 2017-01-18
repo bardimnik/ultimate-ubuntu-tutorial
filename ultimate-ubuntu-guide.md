@@ -18,7 +18,7 @@
 - [Fix font-rendering](#fixing-fonts-rendering)
 - [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)
 - [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
-- Disable guest account
+- [Disable guest account](#disable-guest-account)
 - Fix bug in Avahi
 
 ## Why I wrote this ~~another things to do~~ guide
