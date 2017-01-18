@@ -955,3 +955,16 @@ powerline-daemon --replace
 OK. Now it is properly set up.
 Close and open again terminal and try to edit some git branch in terminal and you will see the magic!
 More information on [Powerline GitHub page](https://github.com/powerline/powerline) and in [documentation](https://powerline.readthedocs.io/en/master/overview.html)
+
+
+## Disable guest account
+I don't know why but Canonical think that somebody uses guest account. I don't know such people.
+Do you really allow some "guest" to touch your computer? I don't think so.
+
+Add thess lines in `/etc/lightdm/lightdm.conf.d/50-no-guest.conf`
+```
+[SeatDefaults]
+allow-guest=false
+```
+Save and Exit.
+That’s it. You won’t see the Guest Account any more.
