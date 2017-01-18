@@ -16,7 +16,7 @@
 - [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)
 - [Disable unwanted services](#disabling-unwanted-services)
 - [Fix font-rendering](#fixing-fonts-rendering)
-- Change GTK theme, icons and cursor
+- [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)
 - Use Powerline for Gnome Terminal
 - Disable guest account
 - Fix bug in Avahi
@@ -900,8 +900,8 @@ hardcode-tray --conversion-tool Inkscape
 OK. Reboot now and enjoy.
 
 Read more information about these tweaks here:
-[Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)
-[Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )
-[Open Zone cursor theme](https://www.gnome-look.org/p/999999/)
-[Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)
-[Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)
+[Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)  
+[Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )  
+[Open Zone cursor theme](https://www.gnome-look.org/p/999999/)  
+[Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)  
+[Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)  
