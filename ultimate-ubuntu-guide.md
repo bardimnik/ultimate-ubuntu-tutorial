@@ -150,3 +150,24 @@ You can do it with this command:
 sudo chattr +C /some_dir/
 ```
 Be carefull - letter `C` is capitalized in that command.
+
+## Force automatic TRIM for SSD
+First of all check if your SSD supports TRIM feature. Run command:
+```bash
+sudo hdparm -I /dev/sda | grep "TRIM supported"
+```
+Ok. Supported! If not then your SSD is a shit and you need to replace it ASAP!
+
+Now check if we have periodic trim job by running this command:
+```
+cat /etc/cron.weekly/fstrim
+```
+Ok. We got it. But I don't believe in it. So I will force periodic TRIM run by these commands:
+```
+sudo cp /usr/share/doc/util-linux/examples/fstrim.service /etc/systemd/system
+sudo cp /usr/share/doc/util-linux/examples/fstrim.timer /etc/systemd/system
+sudo systemctl enable fstrim.timer
+sudo systemctl enable fstrim.service
+```
+Since now once a week our SSD will be trimmed automatically.
+We can forget about this task and live our life.
