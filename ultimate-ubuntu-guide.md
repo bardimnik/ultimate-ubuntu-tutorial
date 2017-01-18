@@ -596,3 +596,59 @@ Déjà Dup is a simple backup tool. It hides the complexity of backing up the
 It is nicely integrated in Ubuntu and Nautilus and runs smooth.
 Just don't forget to config it properly. And also you can edit more parameters of it in dconf-editor by opening
 this path `org.gnome.DejaDup`. Here you can set custom periods of back-ups or set on-line storage.
+
+## Disabling unwanted services
+> **N.B.!**  
+> - *You can ruin everything at this step! You absolutely must know what are you doing and why!*
+
+Run this command to unhide all apps:
+```
+sudo sed -i "s/NoDisplay=true/NoDisplay=false/g" /etc/xdg/autostart/*.desktop
+```
+Then open Autostarts utility in Unity Dash and disable startups that you don't really need.
+
+Next go to services.
+Here are commands to list all active services:
+```
+service --status-all
+systemctl list-unit-files | grep enabled
+systemctl --state=active
+systemd-analyze
+systemd-analyze blame
+systemd-analyze critical-chain
+```
+Read the output and think about it.
+
+Now stop and disable all useless junk:
+```
+sudo systemctl stop bluetooth.service bluetooth.target brltty.service brltty-udev.service apport.service apport-forward.socket apt-daily.service apt-daily.timer cups-browsed.service cups.path cups.service cups.socket saned.service saned.socket whoopsie.service kerneloops.service rsyslog.service syslog.socket syslog.service speech-dispatcher.service
+
+sudo systemctl disable bluetooth.service bluetooth.target brltty.service brltty-udev.service apport.service apport-forward.socket apt-daily.service apt-daily.timer cups-browsed.service cups.path cups.service cups.socket saned.service saned.socket whoopsie.service kerneloops.service rsyslog.service syslog.socket syslog.service speech-dispatcher.service
+
+sudo systemctl mask bluetooth.service bluetooth.target brltty.service brltty-udev.service apport.service apport-forward.socket apt-daily.service apt-daily.timer cups-browsed.service cups.path cups.service cups.socket saned.service saned.socket whoopsie.service kerneloops.service rsyslog.service syslog.socket syslog.service speech-dispatcher.service
+```
+Also `mask` action will prevent activation of those services even when you accidentally update them or reinstall.
+
+OK. Here is the basic start list of things I don't use and always disable:
+
+- I don't print anything - disable `cups`.
+- I don't scan any images - disable `saned`.
+- I am not blind - disable `brltty`.
+- I do all my system updates in manual mode - disable all `apt` services.
+- I don't want to send any reports - disable `kerneloops`, `apport` and `whoopsie` services.
+- I don't want logs on the laptop - disable them. (We stil can use systemd `journalctl`).
+- I don't want my laptop speaking - disable `speech-dispatcher`.
+
+Also you can kill AppArmor service that is useless for my taste (because of his outdated and useless profiles).
+But it will also kill ability of proper installing and using Ubuntu Snap packages. What a shame!
+But I think they are useless too. Just do some research and find what services you want to be disabled.
+
+By the way there are a lot of useless hardcoded services for my taste.
+I was having an experiment - If I disable all of them the memory footprint of Ubuntu will be about 250-300Mb.
+But because of poor architecture and coding quality in Linux and Ubuntu in particular we don't want to do this because
+it will make our OS unstable and useless (more than now). So give your memory to that hungry monster.
+
+> **N.B.!**  
+> - *You can kill a lot of junk services. Just read about them find their functions and dependencies and
+> if you don't want it you kill it. Actually I always disable and remove Zeitgeist, Avahi, AppArmor, Snap, Evolution
+> and most of the preinstalled bloat-ware because I am sure that I don't need them.*
