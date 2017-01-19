@@ -988,4 +988,4 @@ Run this command to enable RAW-format support and RAW previews in file manager:
 ```
 sudo apt install gimp-ufraw gnome-raw-thumbnailer ufraw ufraw-batch exiv2
 ```
-OK. Now you can preview RAWs and open them in Gimp. Also you can install dedicated RAW editor for example Darktable, Photivo, RawTherapee or even proprietary AfterShot Pro. But to be honest none of them can compete with Photoshop, Lightroom or legendary SilkyPix. All of them are suck. 
+OK. Now you can preview RAWs and open them in Gimp. Also you can install dedicated RAW editor for example Darktable, Photivo, RawTherapee or even proprietary AfterShot Pro. But to be honest none of them can compete with Photoshop, Lightroom or legendary SilkyPix. All of them are suck. Sad but true.
