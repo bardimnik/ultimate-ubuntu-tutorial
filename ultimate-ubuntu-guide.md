@@ -20,6 +20,7 @@
 - [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
 - [Disable guest account](#disable-guest-account)
 - [Fix bug in Avahi](#fix-stupid-bug-in-avahi)
+- RAW support
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.
@@ -981,3 +982,10 @@ hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4 #change this line
 hosts: files dns #to this
 ```
 OK. Save, close, reboot, enjoy!
+
+## Enable RAW support 
+Run this command to enable RAW-fornat support and RAW previews in file manager:
+```
+sudo apt install gimp-ufraw gnome-raw-thumbnailer ufraw ufraw-batch exiv2
+```
+OK. Now you can preview RAWs and open them in Gimp. Also you can install dedicated RAW editor for example Darktable, Photivo, RawTherapee or even proprietary AfterShot Pro. But to be honest none of them can compete with Photoshop, Lightroom or legendary SilkyPix. All of them are suck. 
