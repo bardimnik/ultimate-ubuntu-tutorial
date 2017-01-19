@@ -20,7 +20,7 @@
 - [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
 - [Disable guest account](#disable-guest-account)
 - [Fix bug in Avahi](#fix-stupid-bug-in-avahi)
-- RAW support
+- [Enable RAW support](#enable-raw-support)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.
@@ -984,7 +984,7 @@ hosts: files dns #to this
 OK. Save, close, reboot, enjoy!
 
 ## Enable RAW support 
-Run this command to enable RAW-fornat support and RAW previews in file manager:
+Run this command to enable RAW-format support and RAW previews in file manager:
 ```
 sudo apt install gimp-ufraw gnome-raw-thumbnailer ufraw ufraw-batch exiv2
 ```
