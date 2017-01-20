@@ -838,7 +838,7 @@ Save and exit. Now recompile schema:
 ```
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 ```
-This will not only make our greeting screen stylish but also it will disable that annoying drum sound at login.
+This will not only make our greeting screen stylish but also it will disable that annoying drum sound at login.  
 OK. Let's go deeper.
 
 One more thing is to set some new cursor. I like "Open Zone" cursor.  
