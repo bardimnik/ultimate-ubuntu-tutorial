@@ -1,96 +1,100 @@
 ## Index
-- [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
-- [Basic OS installation](#ubuntu-installation-process)
-  - [Install basic developer packages](#install-some-basic-developer-whistles)
-- [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)
-- [Force automatic SSD TRIM](#force-automatic-trim-for-ssd)
-- [Configure Intel HD graphic](#configure-intel-hd-graphic)
-- [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)
-- [Reduce system temperature](#pay-attention-to-system-temperature)
-- [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)
-- [Save battery with TLP daemon](#save-battery-with-tlp-daemon)
-- [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)
-- [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)
-- [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)
-- [Configure Firewall](#enable-firewall)
-- [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)
-- [Disable unwanted services](#disabling-unwanted-services)
-- [Fix font-rendering](#fixing-fonts-rendering)
-- [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)
-- [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)
-- [Disable guest account](#disable-guest-account)
-- [Fix bug in Avahi](#fix-stupid-bug-in-avahi)
-- [Enable RAW support](#enable-raw-support)
+- [Introduction](#why-i-wrote-this-another-things-to-do-guide)  
+- [Basic OS installation](#ubuntu-installation-process)  
+  - [Install basic developer packages](#install-some-basic-developer-whistles)  
+- [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)  
+- [Force automatic SSD TRIM](#force-automatic-trim-for-ssd)  
+- [Configure Intel HD graphic](#configure-intel-hd-graphic)  
+- [Edit `/etc/default/grub boot` options](#edit-etcdefaultgrub-for-kernel-options)  
+- [Reduce system temperature](#pay-attention-to-system-temperature)  
+- [Edit `/etc/sysctl.conf`](#adding-sysctl-parameters)  
+- [Save battery with TLP daemon](#save-battery-with-tlp-daemon)  
+- [Wi-Fi speed tweak with REG domain](#additional-wi-fi-speed-tweak-by-setting-reg-domain)  
+- [Speed up browsing](#speed-up-browsing-with-profile-sync-daemon)  
+- [Use Prelink and Preload](#using-prelink-and-preload-for-system-speed-ups)  
+- [Configure Firewall](#enable-firewall)  
+- [Set back-up daemon](#use-déjà-dup-for-simple-diff-backups)  
+- [Disable unwanted services](#disabling-unwanted-services)  
+- [Fix font-rendering](#fixing-fonts-rendering)  
+- [Change GTK theme, icons and cursor](#set-google-material-gtk-theme-icons-and-cursor)  
+- [Use Powerline for Gnome Terminal](#powerline-for-gnome-terminal)  
+- [Disable guest account](#disable-guest-account)  
+- [Fix bug in Avahi](#fix-stupid-bug-in-avahi)  
+- [Enable RAW support](#enable-raw-support)  
 
 ## Why I wrote this ~~another things to do~~ guide
-The main reason why I wrote this guide is because I need it as my own memo.
+The main reason why I wrote this guide is because I need it as my own memo.  
 
-Also because I'm sick of other Ubuntu guides that are often written by idiots!
-Most often they are useless and written with only one purpose - to collect traffic from Google.
-And they all are almost the same, copy each other or even tell you such stupid dead-simple things like
-Skype installation from Ubuntu Software Center.
-Hi SEO! :fu: you SEO!
+Also because I'm sick of other Ubuntu guides that are often written by idiots!  
+Most often they are useless and written with only one purpose - to collect traffic from Google.  
+And they all are almost the same, copy each other or even tell you such stupid dead-simple things like  
+Skype installation from Ubuntu Software Center.  
+Hi SEO! :fu: you SEO!  
 
-Also most of guides are written for the very beginners or for fresh "swithchers".
-I'm pretty sure that you've seen a lot of Ubuntu Linux  installation guides here and there across the web.
-All these blogs for n00bs like OMG!Ubuntu! or Webupd8 you know them...
-So something more complicated must be written.
+Also most of guides are written for the very beginners or for fresh "swithchers".  
+I'm pretty sure that you've seen a lot of Ubuntu Linux  installation guides here and there across the web.  
+All these blogs for n00bs like OMG!Ubuntu! or Webupd8 you know them...  
+So something more complicated must be written.  
 
 OK. So what makes this guide different?  
 It is for more hard-cored PC users and **It is applicable to reality.**  
 
-And thats why:
+And thats why:  
 
-- I have been using Linux as my only OS for desktop and servers for more than 10 years on all my desktops and servers
-- I always use this guide as my memo to set up my new machine
-- I do work, travel and I make money using my Linux laptop
-- Also this guide tries to be simple yet extremely effective in a real life
+- I have been using Linux as my only OS for desktop and servers for more than 10 years on all my desktops and servers  
+- I always use this guide as my memo to set up my new machine  
+- I do work, travel and I make money using my Linux laptop  
+- Also this guide tries to be simple yet extremely effective in a real life  
 
-So enough talking and let the fun begin!
+So enough talking and let the fun begin!  
 
 ## Ubuntu installation process
-Here is my current laptop with pretty common configuration:
+Here is my current laptop with pretty common configuration:  
 
-- Model: Thinkpad x240 :shit:
-- CPU: Core i5-4300U
-- Mem: 8GB
-- Storage: 240GB SSD
-- Wi-Fi: Intel 7260 adapter
+- Model: Thinkpad x240 :shit:  
+- CPU: Core i5-4300U  
+- Mem: 8GB  
+- Storage: 240GB SSD  
+- Wi-Fi: Intel 7260 adapter  
 
 > **N.B.!**  
 > - *Do not buy current Thinkpads because they are crap* :shit:  
 > - *Do not mess with damned Lenovo who ruin IBM's Thinkpad line* :cry:  
 
-Also I ripped out that f#ckin useless x240 touchpad and replaced it with touchpad from x250 that have those lovely real
-buttons for using with trackpoint. So I can't tell you how to configure x240 touchpad with those virtual buttons.
-I was trying different configs and even patched `libinput` for it. But no matter what it is impossible to use it
-without pain and tears. That's why I ripped it out. And I recommend you to do the same.
+Also I ripped out that f#ckin useless x240 touchpad and replaced it with touchpad from x250 that have those lovely  
+real buttons for using with trackpoint. So I can't tell you how to configure x240 touchpad with those virtual buttons.  
+I was trying different configs and even patched `libinput` for it. But no matter what it is impossible to use it  
+without pain and tears. That's why I ripped it out. And I recommend you to do the same.  
 
 OK. Here are the steps to reproduce:  
 
-1. Download Ubuntu 16.04 LTS image and create bootable USB stick.
-2. Go to BIOS and **disable** "Secure Boot" and "Security Chip", **enable** "USB UEFI BIOS Support" and all in "I/O Port Access", also **set** "Legacy Only" boot option.
-3. Boot in "Live Mode" by choosing your bootable media in BIOS.
-4. Now when you are in "Live Mode" run "Gnome Disks utility" or "GParted" to format your SSD with zero-rewriting.
-5. Run Ubuntu installer and when it will ask you about your target disk for installation choose "Manual Partitioning" option and create the **only one** partition with BTRFS file system and root mount-point (`/`). It will automatically create BTRFS subvolumes `@/` and `@home` which is useful.
-6. Next set your username, pass, e.t.c and just wait until installation process will finish.
-7. Now boot to your fresh installed Ubuntu and check "Software updates" options and enable "Partner repository". Also enable (:heavy_check_mark:) `intel-microcode` on "Drivers" tab.
-8. Then update Ubuntu to current state by running this command:
+1. Download Ubuntu 16.04 LTS image and create bootable USB stick.  
+2. Go to BIOS and **disable** "Secure Boot" and "Security Chip", **enable** "USB UEFI BIOS Support" and all in  
+"I/O Port Access", also **set** "Legacy Only" boot option.  
+3. Boot in "Live Mode" by choosing your bootable media in BIOS.  
+4. Now when you are in "Live Mode" run "Gnome Disks utility" or "GParted" to format your SSD with zero-rewriting.  
+5. Run Ubuntu installer and when it will ask you about your target disk for installation choose "Manual Partitioning"  
+option and create the **only one** partition with BTRFS file system and root mount-point (`/`). It will automatically  
+create BTRFS subvolumes `@/` and `@home` which is useful.  
+6. Next set your username, pass, e.t.c and just wait until installation process will finish.  
+7. Now boot to your fresh installed Ubuntu and check "Software updates" options and enable "Partner repository".  
+Also enable (:heavy_check_mark:) `intel-microcode` on "Drivers" tab.  
+8. Then update Ubuntu to current state by running this command:  
 ```
 sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 ```
-Clean up and Reboot after command finishes:
+Clean up and Reboot after command finishes:  
 ```
 sudo apt -y autoremove && sudo fstrim --all && sudo reboot now
 ```
-Thats it. Now you have installed and updated Ubuntu 16.04 LTS ready for configuration and tweaks.
+Thats it. Now you have installed and updated Ubuntu 16.04 LTS ready for configuration and tweaks.  
 
 ### Install some basic developer whistles
-Run this command:
+Run this command:  
 ```
 sudo apt -y install autoconf automake build-essential libssl-dev gettext git-core git gitg subversion git-svn checkinstall deborphan wget curl cdbs devscripts dh-make fakeroot check libtool gcc liblzo2-dev g++ libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libxml2-dev unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller genisoimage gtk2-engines-pixbuf gtk2-engines-murrine inkscape libgdk-pixbuf2.0-dev librsvg2-dev libsass0 libxml2-utils pkg-config pysassc libqt4-svg unity-tweak-tool dconf-editor sysfsutils libcurl4-gnutls-dev libexpat1-dev libz-dev
 ```
-I will not explain this step ok? I think you are not so stupid and can read packages names.
+I will not explain this step ok? I think you are not so stupid and can read packages names.  
 
 ## Edit `/etc/fstab` mount options
 
@@ -131,7 +135,7 @@ sudo btrfs balance start /
 sudo btrfs balance start /home
 ```
 Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.  
-And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-balance) block groups on a BTRFS.
+And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-balance) block groups on a BTRFS.  
 
 Also because of our `/etc/fstab` config all new files will be compressed and our FS will be defragmented automatically.
 
@@ -207,9 +211,10 @@ cat /var/log/Xorg.0.log | grep Tear
 cat /var/log/Xorg.0.log | grep DRI
 glxinfo | grep rendering
 ```
-This configuration will force "SNA rendering" and "TearFree option" for our Intel HD graphics card. In other words it forces the use of hardware rendering.  
-So these settings will help us to run extremely smoooooooth video playback and animations in Unity GUI.
-Also we enable "DRI3" infrastructure becauses it works faster.
+This configuration will force "SNA rendering" and "TearFree option" for our Intel HD graphics card.  
+In other words it forces the use of hardware rendering.  
+So these settings will help us to run extremely smoooooooth video playback and animations in Unity GUI.  
+Also we enable "DRI3" infrastructure becauses it works faster.  
 Read this [article at Phoronix](http://www.phoronix.com/scan.php?page=article&item=intel-skylake-dri3&num=1)
 about difference between "DRI2" and "DRI3" performance.
 
@@ -223,10 +228,10 @@ Open file `/etc/default/grub` and change kernel boot options line:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=enable pcie_aspm=force i915.semaphores=1 i915.i915_enable_rc6=7 i915.i915_enable_fbc=1 i915.lvds_downclock=1 drm.vblankoffdelay=1 ipv6.disable=1"
 ```
-Here we explicitly set CPU governor to `intel_pstate` and set kernel options for Intel graphics that will increase FPS
+Here we explicitly set CPU governor to `intel_pstate` and set kernel options for Intel graphics that will increase FPS  
 and decrease power consumption.  
-And also we explicitly disable IPv6 because it's a big security mess right now.
-Don't use it while community is thinking how to secure this back-door.
+And also we explicitly disable IPv6 because it's a big security mess right now.  
+Don't use it while community is thinking how to secure this back-door.  
 
 Read this [article with test of different kernel options and battery draining.](https://www.phoronix.com/scan.php?page=article&item=intel_i915_power&num=1)
 
@@ -275,9 +280,9 @@ coretemp
 thinkpad_acpi
 tcp_westwood
 ```
-At this step we install and start sensors and disk-smart detecting utils, detect all suported sensors in our system
-and load special acpi module for thinkpad laptops.
-Also load `tcp_westwood` module which we will use later for wifi speedups.
+At this step we install and start sensors and disk-smart detecting utils, detect all suported sensors in our system  
+and load special acpi module for thinkpad laptops.  
+Also load `tcp_westwood` module which we will use later for wifi speedups.  
 Read about `tcp_westwood` and other congestion controls [here](https://www.hindawi.com/journals/jcnc/2012/806272/) and [there](https://arxiv.org/abs/1212.1621).
 
 Reboot now.
@@ -289,8 +294,8 @@ Reboot now.
 Read about [thermald](https://01.org/linux-thermal-daemon/documentation/introduction-thermal-daemon).
 
 ## Adding sysctl parameters
-In simple terms this configuration speeds up disk subsystem, extremely speeds up those slow-and-laggy Wi-Fi connections
-in hotels and airports and defend you from stupid script-kiddies.
+In simple terms this configuration speeds up disk subsystem, extremely speeds up those slow-and-laggy Wi-Fi connections  
+in hotels and airports and defend you from stupid script-kiddies.  
 
 Edit file `/etc/sysctl.conf` remove everything it contains and add these lines into it:
 ```
@@ -356,15 +361,15 @@ sudo sysctl -p
 ```
 Reboot now.
 
-This settings affect memory allocation, different network parameters, routings and add a little more security
-to network connections.
+This settings affect memory allocation, different network parameters, routings and add a little more security  
+to network connections.  
 
 > **N.B!**  
 > - *Those tweaks are optimized for my situation and may not work properly for you. You must know what are you doing
 > before blindly copy-paste all these settings. Also you must recalculate all the values if you have any other amount
 > of memory rather than 8GB or if you use 1GE wired connection.*
 
-Read [kernel.org](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt), [Wikipedia](http://en.wikipedia.org/wiki/Sysctl) and my [reference sysctl.conf](here will be link to my file) to understand what, where and why.
+Read [kernel.org](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt), [Wikipedia](http://en.wikipedia.org/wiki/Sysctl) and my [reference sysctl.conf](https://github.com/systematicat/sysctl-boilerplate) to understand what, where and why.
 
 > **N.B.!**  
 > - *Do not forget to load `tcp_westwood` module and then add it in the startup loading modules in `/etc/modules`.*
@@ -378,7 +383,8 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 ```
 
 ## Save battery with TLP daemon
-Now we will install "TLP utility" that will dramatically decrease power consumption and will increase battery-driven working time. And yes it was designed especially for Thinkpads. Absolutely must have!
+Now we will install "TLP utility" that will dramatically decrease power consumption and will increase battery-driven  
+working time. And yes it was designed especially for Thinkpads. Absolutely must have!  
 
 Even if TLP packages are available via the official Ubuntu repository we want to use PPA for newer versions:
 ```
@@ -445,9 +451,9 @@ DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi"
 DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi"
 ```
 Save and exit.
-These settings will enable power-saving functions for CPU, SSD, Wi-Fi adapter and Sounblaster.
-Also it will set battery charging thresholds to save our battery life-cycle and minimize wearing.
-And also it will automatically switch on/off WIFI when we will connect/disconnect LAN wire.
+These settings will enable power-saving functions for CPU, SSD, Wi-Fi adapter and Sounblaster.  
+Also it will set battery charging thresholds to save our battery life-cycle and minimize wearing.  
+And also it will automatically switch on/off WIFI when we will connect/disconnect LAN wire.  
 
 Run these commands while on charger:
 ```
@@ -484,7 +490,7 @@ sudo apt install --reinstall tlp tlp-rdw tp-smapi-dkms acpi-call-dkms lm-sensors
 > **N.B.!**  
 > - *This dirty hack can be illegal in your country. But who cares right?*
 
-This hack will tell your Wi-Fi adapter that he is on vacation in Venezuela (the most free country ha-ha) and thats why
+This hack will tell your Wi-Fi adapter that he is on vacation in Venezuela (the most free country ha-ha) and thats why  
 he must increase `tx_power` of adapter in 2402MHz-2482MHz range.
 
 Viva la poor Venezuela radio regulation!
@@ -505,11 +511,11 @@ sudo iw reg get
 Easy-peasy! Enjoy!
 
 ## Speed up browsing with "profile-sync-daemon"
-Recent browsers are hungry fat pigs. They can eat all your memory and shit out all your disk.
-So using this small helpful daemon is absolutely must!
-It is tiny pseudo-daemon designed to manage browser profile(s) in tmpfs and to periodically sync back
-to the physical disc (HDD/SSD). This is accomplished by an innovative use of rsync to maintain synchronization between
-a tmpfs copy and media-bound backup of the browser profile(s). Additionally, `psd` features several
+Recent browsers are hungry fat pigs. They can eat all your memory and shit out all your disk.  
+So using this small helpful daemon is absolutely must!  
+It is tiny pseudo-daemon designed to manage browser profile(s) in tmpfs and to periodically sync back  
+to the physical disc (HDD/SSD). This is accomplished by an innovative use of rsync to maintain synchronization between  
+a tmpfs copy and media-bound backup of the browser profile(s). Additionally, `psd` features several  
 crash recovery features. Since we have enough memory let's use it!
 
 We need to add PPA and install daemon:
@@ -550,15 +556,15 @@ Additional reading is in famous [Arch Wiki](https://wiki.archlinux.org/index.php
 ## Using Prelink and Preload for system speed ups
 Ok. First - **DO NOT USE PRELINK! NEVER!**
 Neither on desktop nor on server.
-It is useless and deprecated. It gains no speedups on modern hardware but can cause a lot of problems.
+It is useless and deprecated. It gains no speedups on modern hardware but can cause a lot of problems.  
 Read this [discussion](https://pagure.io/fesco/issue/1183).
 
 But we still can use preload daemon.
-It is a tool that monitors and keeps a history of the user's most frequently used applications and the files
-that those applications load upon their execution. And based on that data, it then tries to guess what app the user
-will be most likely to open in the near future and then loads that data from the disk to the page cache,
-before they're requested. In plain simple terms - once preload is installed, after a while you should be able to open
-your frequently used applications much faster. Sounds good right?
+It is a tool that monitors and keeps a history of the user's most frequently used applications and the files  
+that those applications load upon their execution. And based on that data, it then tries to guess what app the user  
+will be most likely to open in the near future and then loads that data from the disk to the page cache,  
+before they're requested. In plain simple terms - once preload is installed, after a while you should be able to open  
+your frequently used applications much faster. Sounds good right?  
 
 Install it:
 ```
@@ -594,8 +600,8 @@ Déjà Dup is a simple backup tool. It hides the complexity of backing up the
 "Right Way" (encrypted, off-site, and regular) and uses `duplicity` as the back-end.
 
 It is nicely integrated in Ubuntu and Nautilus and runs smooth.
-Just don't forget to config it properly. And also you can edit more parameters of it in dconf-editor by opening
-this path `org.gnome.DejaDup`. Here you can set custom periods of back-ups or set on-line storage.
+Just don't forget to config it properly. And also you can edit more parameters of it in dconf-editor by opening  
+this path `org.gnome.DejaDup`. Here you can set custom periods of back-ups or set on-line storage.  
 
 ## Disabling unwanted services
 > **N.B.!**  
@@ -639,14 +645,14 @@ OK. Here is the basic start list of things I don't use and always disable:
 - I don't want logs on the laptop - disable them. (We stil can use systemd `journalctl`).
 - I don't want my laptop speaking - disable `speech-dispatcher`.
 
-Also you can kill AppArmor service that is useless for my taste (because of his outdated and useless profiles).
-But it will also kill ability of proper installing and using Ubuntu Snap packages. What a shame!
-But I think they are useless too. Just do some research and find what services you want to be disabled.
+Also you can kill AppArmor service that is useless for my taste (because of his outdated and useless profiles).  
+But it will also kill ability of proper installing and using Ubuntu Snap packages. What a shame!  
+But I think they are useless too. Just do some research and find what services you want to be disabled.  
 
-By the way there are a lot of useless hardcoded services for my taste.
-I was having an experiment - If I disable all of them the memory footprint of Ubuntu will be about 250-300Mb.
-But because of poor architecture and coding quality in Linux and Ubuntu in particular we don't want to do this because
-it will make our OS unstable and useless (more than now). So give your memory to that hungry monster.
+By the way there are a lot of useless hardcoded services for my taste.  
+I was having an experiment - If I disable all of them the memory footprint of Ubuntu will be about 250-300Mb.  
+But because of poor architecture and coding quality in Linux and Ubuntu in particular we don't want to do this because  
+it will make our OS unstable and useless (more than now). So give your memory to that hungry monster.  
 
 > **N.B.!**  
 > - *You can kill a lot of junk services. Just read about them find their functions and dependencies and
@@ -660,8 +666,8 @@ If you hate default fat Ubuntu fonts and how they render this part is for you!
 > - *Do not use "infinality patch" for font rendering. It's abandoned and deprecated.
 > And it surely will kill all letters geometry. Actually I am completely don't understand why this stupid *infinality patch* was so popular.*
 
-Because my laptop has only 12.5" low-quality screen I will use Roboto hinted fonts for everything and
-set Chrome OS like font rendering. I found that it is nice for my eyes and save space on a such micro-screen.
+Because my laptop has only 12.5" low-quality screen I will use Roboto hinted fonts for everything and  
+set Chrome OS like font rendering. I found that it is nice for my eyes and save space on a such micro-screen.  
 
 First we must install new fonts:
 ```
@@ -670,7 +676,7 @@ sudo apt -y install fonts-croscore fonts-roboto-hinted ttf-mscorefonts-installer
 After installation set all fonts in "Unity Tweak Tool" to Roboto at 10.5 size.
 Also set Roboto Bold 10.5 for window heading.
 
-Now open Google Chrome (the only one browser for Linux that doesn't suck), go to Settings and change fonts in it.
+Now open Google Chrome (the only one browser for Linux that doesn't suck), go to Settings and change fonts in it.  
 From up to down:
 ```
 Tinos
@@ -798,11 +804,11 @@ for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roma
     fc-match "$family"
 done
 ```
-Read the output. If all is OK you should see Tinos, Arimo and Cousine fonts applied as default fonts.
+Read the output. If all is OK you should see Tinos, Arimo and Cousine fonts applied as default fonts.  
 That's it! Now we have beautiful crispy fonts!
 
 ## Set Google Material GTK theme, icons and cursor
-As a developer I like darkness. Also I like Google Material color palette and I found beautiful GTK theme that uses it.
+As a developer I like darkness. Also I like Google Material color palette and I found beautiful GTK theme that uses it.  
 Also I found suitable flat icons pack that match this theme. Let's install them:
 ```
 sudo add-apt-repository ppa:tista/adapta
@@ -835,12 +841,12 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 This will not only make our greeting screen stylish but also it will disable that annoying drum sound at login.
 OK. Let's go deeper.
 
-One more thing is to set some new cursor. I like "Open Zone" cursor.
-Dowload it and unzip - https://dl.opendesktop.org/api/files/download/id/1462316428/111343-OpenZone-1.2.5.tar.xz
-Now choose which version of it you like and copy it to `/usr/share/icons` (I like black slim version).
-Again, go to "Unity Tweak Tool" and set your new cursor.
-Also adjust here Unity Panel color to match our dark theme.
-Beautiful! Do you want more whistles? Ok!
+One more thing is to set some new cursor. I like "Open Zone" cursor.  
+Dowload it and unzip - https://dl.opendesktop.org/api/files/download/id/1462316428/111343-OpenZone-1.2.5.tar.xz  
+Now choose which version of it you like and copy it to `/usr/share/icons` (I like black slim version).  
+Again, go to "Unity Tweak Tool" and set your new cursor.  
+Also adjust here Unity Panel color to match our dark theme.  
+Beautiful! Do you want more whistles? Ok!  
 
 Now we will fix Ubuntu notification bubbles. Run this:
 ```
@@ -907,7 +913,7 @@ Read more information about these tweaks here:
 [Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)  
 
 ## Powerline for Gnome Terminal
-Powerline is a statusline plug-in for vim, and provides statuslines and prompts for several other applications,
+Powerline is a statusline plug-in for vim, and provides statuslines and prompts for several other applications,  
 including zsh, bash, tmux, IPython, Awesome and Qtile.
 
 Run this to install patched-for-powerline fonts:
@@ -916,7 +922,7 @@ git clone https://github.com/powerline/fonts.git
 cd fonts/
 sudo ./install.sh
 ```
-Now set in "Unity Tweak Tool" Roboto Mono for Powerline font with size 10.5 for monospaced fonts.
+Now set in "Unity Tweak Tool" Roboto Mono for Powerline font with size 10.5 for monospaced fonts.  
 Or set it in Gnome Terminal Profile settings.
 
 Next run:
@@ -954,7 +960,7 @@ EOF
 powerline-daemon --replace
 ```
 OK. Now it is properly set up.
-Close and open again terminal and try to edit some git branch in terminal and you will see the magic!
+Close and open again terminal and try to edit some git branch in terminal and you will see the magic!  
 More information on [Powerline GitHub page](https://github.com/powerline/powerline) and in [documentation](https://powerline.readthedocs.io/en/master/overview.html)
 
 
