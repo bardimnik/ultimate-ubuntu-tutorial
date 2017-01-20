@@ -22,7 +22,7 @@
 - [Fix bug in Avahi](#fix-stupid-bug-in-avahi)  
 - [Enable RAW support](#enable-raw-support)  
 - [Install and configure GIMP](#install-and-configure-gimp)
-- Install Skype
+- [Install Skype](#install-skype)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
@@ -1022,4 +1022,4 @@ Below commands will install Skype from Ubuntu's partner repository (it must be e
 ```
 sudo apt -y install sni-qt:i386 libdbusmenu-qt2:i386 libqt4-dbus:i386 libxss1:i386 libgtk2.0-0:i386 gtk2-engines:i386 libgconf-2-4:i386 libasound2-plugins:i386 libv4l-0:i386 skype
 ```
-Those additional packages will help you to avoid any problems with sound or camera.
+Those additional packages will help you to avoid any possible problems with sound or camera.
