@@ -1,5 +1,5 @@
 ## Index
-- [Introduction](#why-i-wrote-this-another-things-to-do-guide) 
+- [Introduction](#why-i-wrote-this-another-things-to-do-guide)
 - [Basic OS installation](#ubuntu-installation-process)
   - [Install basic developer packages](#install-some-basic-developer-whistles)
 - [Edit `/etc/fstab` mount options](#edit-etcfstab-mount-options)
@@ -36,8 +36,8 @@ I'm pretty sure that you've seen a lot of Ubuntu Linux  installation guides here
 All these blogs for n00bs like OMG!Ubuntu! or Webupd8 you know them...
 So something more complicated must be written.
 
-OK. So what makes this guide different?  
-It is for more hard-cored PC users and **It is applicable to reality.**  
+OK. So what makes this guide different?
+It is for more hard-cored PC users and **It is applicable to reality.**
 
 And thats why:
 
@@ -57,16 +57,16 @@ Here is my current laptop with pretty common configuration:
 - Storage: 240GB SSD
 - Wi-Fi: Intel 7260 adapter
 
-> **N.B.!**  
-> - *Do not buy current Thinkpads because they are crap* :shit:  
-> - *Do not mess with damned Lenovo who ruin IBM's Thinkpad line* :cry:  
+> **N.B.!**
+> - *Do not buy current Thinkpads because they are crap* :shit:
+> - *Do not mess with damned Lenovo who ruin IBM's Thinkpad line* :cry:
 
 Also I ripped out that f#ckin useless x240 touchpad and replaced it with touchpad from x250 that have those lovely real
 buttons for using with trackpoint. So I can't tell you how to configure x240 touchpad with those virtual buttons.
 I was trying different configs and even patched `libinput` for it. But no matter what it is impossible to use it
 without pain and tears. That's why I ripped it out. And I recommend you to do the same.
 
-OK. Here are the steps to reproduce:  
+OK. Here are the steps to reproduce:
 
 1. Download Ubuntu 16.04 LTS image and create bootable USB stick.
 2. Go to BIOS and **disable** "Secure Boot" and "Security Chip", **enable** "USB UEFI BIOS Support" and all in "I/O Port Access", also **set** "Legacy Only" boot option.
@@ -94,16 +94,16 @@ I will not explain this step ok? I think you are not so stupid and can read pack
 
 ## Edit `/etc/fstab` mount options
 
-Here we will set mount options for our partitions.  
+Here we will set mount options for our partitions.
 Edit file `/etc/fstab` with your favorite editor and change options line for every partition or BTRFS subvolume:
 ```
 UUID=some_UUID    /        btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@        0    1
 UUID=some_UUID    /home    btrfs    rw,ssd_spread,space_cache,compress=lzo,autodefrag,noatime,subvol=@home    0    2
 ```
-Here we explicitly define the most useful and proper settings for our SSD.  
+Here we explicitly define the most useful and proper settings for our SSD.
 You can read more about BTRFS mount options on [btrfs.wIki.kernel.org](https://btrfs.wiki.kernel.org/index.php/Mount_options)
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not use option `nodatacow`!
 It is widely recommended over the internet by random idiots but the thruth is - perfomance gained from this option
 is usually about zero. But it will ruin most advantages of BTRFS! For examle it will disable compression.*
@@ -130,18 +130,18 @@ sudo chattr +c /home
 sudo btrfs balance start /
 sudo btrfs balance start /home
 ```
-Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.  
+Here we will defragment our `@/` and `@home` subvolumes with `lzo-compression`. And set attribute `compressed` to them.
 And at last we will [balance](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-balance) block groups on a BTRFS.
 
 Also because of our `/etc/fstab` config all new files will be compressed and our FS will be defragmented automatically.
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not forget to turn on `write cache feature` in "Gnome Disks utility".
 > Just go to your SSD settings in this utility and turn on this feature.*
 
 Reboot again.
 
-> **N.B.!**  
+> **N.B.!**
 > - *Because of BTRFS design it is recommended to disable `copy-on-write` by setting special attribute for directories
 > and/or files with heavy R-W usage such as catalog with virtual machines images or catalog/files that you share via torrents.*
 
@@ -179,9 +179,9 @@ Let's tune it. Start with this command:
 ```
 sudo apt -y install gksu policykit-1 gdebi mesa-utils
 ```
-Ok. Now dowload [Intel Graphics Update Tool for Linux](https://download.01.org/gfx/ubuntu/16.04/main/pool/main/i/intel-graphics-update-tool/intel-graphics-update-tool_2.0.2_amd64.deb) and install it using "GDebi" installer which will automatically fix and resolve all depencies.  
-Next run "Intel Graphics Update Tool" from Ubuntu app menu and install graphics stack.  
-Reboot after that.  
+Ok. Now dowload [Intel Graphics Update Tool for Linux](https://download.01.org/gfx/ubuntu/16.04/main/pool/main/i/intel-graphics-update-tool/intel-graphics-update-tool_2.0.2_amd64.deb) and install it using "GDebi" installer which will automatically fix and resolve all depencies.
+Next run "Intel Graphics Update Tool" from Ubuntu app menu and install graphics stack.
+Reboot after that.
 
 Next create this catalog and file:
 ```
@@ -207,13 +207,13 @@ cat /var/log/Xorg.0.log | grep Tear
 cat /var/log/Xorg.0.log | grep DRI
 glxinfo | grep rendering
 ```
-This configuration will force "SNA rendering" and "TearFree option" for our Intel HD graphics card. In other words it forces the use of hardware rendering.  
+This configuration will force "SNA rendering" and "TearFree option" for our Intel HD graphics card. In other words it forces the use of hardware rendering.
 So these settings will help us to run extremely smoooooooth video playback and animations in Unity GUI.
 Also we enable "DRI3" infrastructure becauses it works faster.
 Read this [article at Phoronix](http://www.phoronix.com/scan.php?page=article&item=intel-skylake-dri3&num=1)
 about difference between "DRI2" and "DRI3" performance.
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not use any PPAs with graphic drivers like Oibaf's or Xorg-edgers.
 > We have already installed all we need for graphics.
 > And any updates will come to our system directly from official Intel repository.*
@@ -224,13 +224,13 @@ Open file `/etc/default/grub` and change kernel boot options line:
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_pstate=enable pcie_aspm=force i915.semaphores=1 i915.i915_enable_rc6=7 i915.i915_enable_fbc=1 i915.lvds_downclock=1 drm.vblankoffdelay=1 ipv6.disable=1"
 ```
 Here we explicitly set CPU governor to `intel_pstate` and set kernel options for Intel graphics that will increase FPS
-and decrease power consumption.  
+and decrease power consumption.
 And also we explicitly disable IPv6 because it's a big security mess right now.
 Don't use it while community is thinking how to secure this back-door.
 
 Read this [article with test of different kernel options and battery draining.](https://www.phoronix.com/scan.php?page=article&item=intel_i915_power&num=1)
 
-> **N.B.!**  
+> **N.B.!**
 > - *Diverting from the defaults will mark the kernel as tainted from Linux 3.18 onwards.
 > This basically implies using other options than the per-chip defaults is considered experimental
 > and not supported by the developers. But that's OK for us. Forget about it.*
@@ -250,7 +250,7 @@ sudo update-grub
 ```
 Reboot now.
 
-> **N.B.!**  
+> **N.B.!**
 > - *If you don't really know why you need them do not add any other options from random tutorials in `/etc/default/grub`.
 > Also we don't need any acpi options here because we will force-load `thinkpad_acpi` module and all acpi functions
 > like Fn-kyes will works just fine. Also we don't need any other `i915` options because they are useless.*
@@ -282,7 +282,7 @@ Read about `tcp_westwood` and other congestion controls [here](https://www.hinda
 
 Reboot now.
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not use any fan controlling utils (like "thinkfan") because we use special `thermald` daemon
 > who do all the magic automatically. So our laptop will never fry up. I hope.*
 
@@ -359,14 +359,14 @@ Reboot now.
 This settings affect memory allocation, different network parameters, routings and add a little more security
 to network connections.
 
-> **N.B!**  
+> **N.B!**
 > - *Those tweaks are optimized for my situation and may not work properly for you. You must know what are you doing
 > before blindly copy-paste all these settings. Also you must recalculate all the values if you have any other amount
 > of memory rather than 8GB or if you use 1GE wired connection.*
 
 Read [kernel.org](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt), [Wikipedia](http://en.wikipedia.org/wiki/Sysctl) and my [reference sysctl.conf](here will be link to my file) to understand what, where and why.
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not forget to load `tcp_westwood` module and then add it in the startup loading modules in `/etc/modules`.*
 
 Also do not forget to disable IPv6 in grub or add these parameters in `/etc/sysctl.conf`:
@@ -474,14 +474,14 @@ sudo tlp fullcharge BAT1
 All next charges will be battery-life-optimized by TLP.
 Read for more information [here](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html) and [there](https://github.com/linrunner/TLP/issues/183#issuecomment-175228097)
 
-> **N.B.!**  
+> **N.B.!**
 > - *Once after kernel updated I saw a strange thing when TLP stops working. So now just in case after every new kernel update I simply reinstall all TLP-related stuff with this command:*
 ```
 sudo apt install --reinstall tlp tlp-rdw tp-smapi-dkms acpi-call-dkms lm-sensors thermald intel-microcode smartmontools
 ```
 
 ## Additional Wi-Fi speed tweak by setting REG domain
-> **N.B.!**  
+> **N.B.!**
 > - *This dirty hack can be illegal in your country. But who cares right?*
 
 This hack will tell your Wi-Fi adapter that he is on vacation in Venezuela (the most free country ha-ha) and thats why
@@ -598,7 +598,7 @@ Just don't forget to config it properly. And also you can edit more parameters o
 this path `org.gnome.DejaDup`. Here you can set custom periods of back-ups or set on-line storage.
 
 ## Disabling unwanted services
-> **N.B.!**  
+> **N.B.!**
 > - *You can ruin everything at this step! You absolutely must know what are you doing and why!*
 
 Run this command to unhide all apps:
@@ -648,7 +648,7 @@ I was having an experiment - If I disable all of them the memory footprint of Ub
 But because of poor architecture and coding quality in Linux and Ubuntu in particular we don't want to do this because
 it will make our OS unstable and useless (more than now). So give your memory to that hungry monster.
 
-> **N.B.!**  
+> **N.B.!**
 > - *You can kill a lot of junk services. Just read about them find their functions and dependencies and
 > if you don't want it you kill it. Actually I always disable and remove Zeitgeist, Avahi, AppArmor, Snap, Evolution
 > and most of the preinstalled bloat-ware because I am sure that I don't need them.*
@@ -656,7 +656,7 @@ it will make our OS unstable and useless (more than now). So give your memory to
 ## Fixing fonts rendering
 If you hate default fat Ubuntu fonts and how they render this part is for you!
 
-> **N.B.!**  
+> **N.B.!**
 > - *Do not use "infinality patch" for font rendering. It's abandoned and deprecated.
 > And it surely will kill all letters geometry. Actually I am completely don't understand why this stupid *infinality patch* was so popular.*
 
@@ -899,12 +899,12 @@ hardcode-tray --conversion-tool Inkscape
 ```
 OK. Reboot now and enjoy.
 
-Read more information about these tweaks here:  
-[Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)  
-[Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )  
-[Open Zone cursor theme](https://www.gnome-look.org/p/999999/)  
-[Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)  
-[Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)  
+Read more information about these tweaks here:
+[Adapta GTK theme GitHub](https://github.com/adapta-project/adapta-gtk-theme)
+[Papirus Icon set GitHub](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme )
+[Open Zone cursor theme](https://www.gnome-look.org/p/999999/)
+[Leolik's PPA with patched notify-osd](https://launchpad.net/~leolik/+archive/ubuntu/leolik)
+[Herdcode tray patch](https://github.com/bil-elmoussaoui/Hardcode-Tray)
 
 ## Powerline for Gnome Terminal
 Powerline is a statusline plug-in for vim, and provides statuslines and prompts for several other applications,
@@ -957,7 +957,6 @@ OK. Now it is properly set up.
 Close and open again terminal and try to edit some git branch in terminal and you will see the magic!
 More information on [Powerline GitHub page](https://github.com/powerline/powerline) and in [documentation](https://powerline.readthedocs.io/en/master/overview.html)
 
-
 ## Disable guest account
 I don't know why but Canonical think that somebody uses guest account. I don't know such people.
 Do you really allow some "guest" to touch your computer? I don't think so.
@@ -983,7 +982,7 @@ hosts: files dns #to this
 ```
 OK. Save, close, reboot, enjoy!
 
-## Enable RAW support 
+## Enable RAW support
 Run this command to enable RAW-format support and RAW previews in file manager:
 ```
 sudo apt install gimp-ufraw gnome-raw-thumbnailer ufraw ufraw-batch exiv2
