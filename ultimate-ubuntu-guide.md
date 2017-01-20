@@ -1004,5 +1004,5 @@ Run these commands:
 ```
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
-sudo apt install --reinstall gimp-ufraw gimp gimp-data gimp-data-extras gnome-xcf-thumbnailer
+sudo apt install --reinstall gimp-ufraw gimp gimp-data gimp-data-extras gnome-xcf-thumbnailer gimp-plugin-registry
 ```
