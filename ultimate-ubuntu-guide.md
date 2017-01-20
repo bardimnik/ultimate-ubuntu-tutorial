@@ -1006,3 +1006,12 @@ sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 sudo apt install --reinstall gimp-ufraw gimp gimp-data gimp-data-extras gnome-xcf-thumbnailer gimp-plugin-registry
 ```
+OK. Now run GIMP and open Preferences. Go to Environment and set:
+- Minimal numbers of undolevels: 100
+- Maximum undo memory: 256MB
+- Tile cache size: 4GB
+- Maximum new image size: 256MB
+- Number of processors to use: 4
+
+Next go to Theme amd choose Small. After that go to Tool Options and set Default Interpolation to Sinc (Lanczos3).  
+Save and restart GIMP.
