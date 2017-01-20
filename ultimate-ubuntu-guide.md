@@ -21,7 +21,7 @@
 - [Disable guest account](#disable-guest-account)  
 - [Fix bug in Avahi](#fix-stupid-bug-in-avahi)  
 - [Enable RAW support](#enable-raw-support)  
-- [Install and configure GIMP]()
+- [Install and configure GIMP](#install-and-configure-gimp)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
