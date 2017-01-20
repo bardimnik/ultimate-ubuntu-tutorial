@@ -1007,9 +1007,9 @@ sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
 sudo apt install --reinstall gimp-ufraw gimp gimp-data gimp-data-extras gnome-xcf-thumbnailer gimp-plugin-registry
 ```
 OK. Now run GIMP and open Preferences. Go to Environment and set:
-- Minimal numbers of undolevels: 100
+- Minimal numbers of undo levels: 100
 - Maximum undo memory: 256MB
-- Tile cache size: 4GB
+- Tile cache size: 4GB (~50% of available RAM)
 - Maximum new image size: 256MB
 - Number of processors to use: 4
 
