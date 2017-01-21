@@ -23,6 +23,7 @@
 - [Enable RAW support](#enable-raw-support)  
 - [Install and configure GIMP](#install-and-configure-gimp)
 - [Install Skype](#install-skype)
+- Configure Google Chrome for Intel HD
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
@@ -1023,3 +1024,19 @@ Below commands will install Skype from Ubuntu's partner repository (it must be e
 sudo apt -y install sni-qt:i386 libdbusmenu-qt2:i386 libqt4-dbus:i386 libxss1:i386 libgtk2.0-0:i386 gtk2-engines:i386 libgconf-2-4:i386 libasound2-plugins:i386 libv4l-0:i386 skype
 ```
 Those additional packages will help you to avoid any possible problems with sound or camera.
+
+## Configure Google Chrome with Intel Graphics
+
+> **N.B.!**  
+> - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 because fulscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. But maybe in new versions we will have to enable it again.*
+
+Open `chrome://flags/` page and set these parameters:
+- `#ignore-gpu-blacklist` = Enable
+- `#enable-display-list-2d-canvas` = Enable
+- `#enable-fast-unload` = Enable
+- `#smooth-scrolling` = Enable
+- `#enable-gpu-rasterization` = Force Enable for all layers
+- `#enable-zero-copy` = Enable
+
+Restart browser. 
+OK. Since now Google Chrome will try to use hardware GPU rendereing and even 1080p/60fps videos plays smooth and tear-free.
