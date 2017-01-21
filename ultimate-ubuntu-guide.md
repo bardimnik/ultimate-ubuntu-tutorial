@@ -23,7 +23,7 @@
 - [Enable RAW support](#enable-raw-support)  
 - [Install and configure GIMP](#install-and-configure-gimp)
 - [Install Skype](#install-skype)
-- Configure Google Chrome for Intel HD
+- [Configure Google Chrome for Intel HD](#configure-google-chrome-with-intel-graphics)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
@@ -1028,9 +1028,9 @@ Those additional packages will help you to avoid any possible problems with soun
 ## Configure Google Chrome with Intel Graphics
 
 > **N.B.!**  
-> - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 because fulscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. But maybe in new versions we will have to enable it again.*
+> - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 exec-line, because fulscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. Maybe in new versions we will have to enable it again.*
 
-Open `chrome://flags/` page and set these parameters:
+Let's tweak hardware grpahic utilization. Open `chrome://flags/` page and set these parameters:
 - `#ignore-gpu-blacklist` = Enable
 - `#enable-display-list-2d-canvas` = Enable
 - `#enable-fast-unload` = Enable
@@ -1039,4 +1039,4 @@ Open `chrome://flags/` page and set these parameters:
 - `#enable-zero-copy` = Enable
 
 Restart browser. 
-OK. Since now Google Chrome will try to use hardware GPU rendereing and even 1080p/60fps videos plays smooth and tear-free.
+OK. Since now Google Chrome will try to use hardware GPU rendereing and even 1080p/60fps Youtube videos will play smooth and tear-free.
