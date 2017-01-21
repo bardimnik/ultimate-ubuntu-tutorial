@@ -1030,7 +1030,7 @@ Those additional packages will help you to avoid any possible problems with soun
 > **N.B.!**  
 > - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 exec-line, because fulscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. Maybe in new versions we will have to enable it again.*
 
-Let's tweak hardware graphic utilization. Open `chrome://flags/` page and set these parameters:
+Let's tweak hardware graphic utilization. Open `chrome://flags` page and set these parameters:
 - `#ignore-gpu-blacklist` = Enable
 - `#enable-display-list-2d-canvas` = Enable
 - `#enable-fast-unload` = Enable
