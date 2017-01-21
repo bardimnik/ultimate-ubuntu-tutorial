@@ -1047,22 +1047,22 @@ OK. Since now Google Chrome will try to use hardware GPU rendereing all the time
 
 ## Install Sublime Text
 
-I am using Sublime Text 3 and I recommend you too. Vim is for aliens, Emacs is for fanatics, Geany is abandoned, Atom is slow and Brackets is from Adobe. So actually there is no choice if you want make money with your editor. 
-The easiest way to install it is to use this PPA:
+I am using Sublime Text 3 and I recommend you too. Vim is for aliens, Emacs is for fanatics, Geany is abandoned, Atom is slow and Brackets is from Adobe. So actually there is no choice if you want make money with your editor.  
+The easiest way to install Sublime is to use this PPA:
 ```
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
 sudo apt update
 sudo apt -y install sublime-text-installer
 ``` 
 OK. And now install Package Control from here - https://packagecontrol.io/installation  
-Then open Sublime Text 3 and install next start-point packages:
+Then open Sublime Text 3, press Ctrl+Shift+P and install next start-point packages:
 - Alignment
 - All autocomplete
 - BracketHighlighter
 - EditorConfig
 - Material Theme
 - SideBarEnhancements
-- SublimeLinter
+- SublimeLinter (and linter-plugins for your tasks)
 - zzFile Icons
 
 Restart Sublime Text.  
@@ -1213,4 +1213,4 @@ indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
 ```
-Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this.
+Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this. Also read installation and usage docs for every package that you install and follow them. Do not blindly install all plugins in the world.
