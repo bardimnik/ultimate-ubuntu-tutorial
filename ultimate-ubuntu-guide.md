@@ -24,6 +24,7 @@
 - [Install and configure GIMP](#install-and-configure-gimp)
 - [Install Skype](#install-skype)
 - [Configure Google Chrome for Intel HD](#configure-google-chrome-with-intel-graphics)
+- Install Sublime Text
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
@@ -1043,3 +1044,170 @@ Let's tweak hardware graphic utilization. Open `chrome://flags` page and set the
 
 Restart browser. 
 OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smooth and without tearing.
+
+## Install Sublime Text
+
+I am using Sublime Text 3. The easiest way to install it is to use this PPA:
+```
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt update
+sudo apt -y install sublime-text-installer
+``` 
+OK. And now install Package Control from here - https://packagecontrol.io/installation  
+Then open Sublime Text 3 and install next start-point packages:
+- Alignment
+- All autocomplete
+- BracketHighlighter
+- EditorConfig
+- Material Theme
+- SideBarEnhancements
+- SublimeLinter
+- zzFile Icons
+
+Restart Sublime Text. Here is my `Preferences.sublime-settings`:
+```
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete_commit_on_tab": true,
+	"auto_indent": true,
+	"auto_match_enabled": true,
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"default_line_ending": "unix",
+	"detect_indentation": true,
+	"draw_indent_guides": true,
+	"draw_minimap_border": true,
+	"draw_white_space": "all",
+	"enable_tab_scrolling": false,
+	"enable_telemetry": false,
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": false,
+	"fallback_encoding": "UTF-8",
+	"file_exclude_patterns":
+	[
+		".DS_Store",
+		"*.pid",
+		"*.pyc"
+	],
+	"find_selected_text": true,
+	"fold_buttons": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		"env",
+		"env3",
+		".git",
+		".hg",
+		"CVS",
+		"__pycache__"
+	],
+	"font_face": "Roboto Mono",
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 10.5,
+	"gutter": true,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_active",
+		"draw_normal"
+	],
+	"indent_subsequent_lines": true,
+	"indent_to_bracket": true,
+	"line_numbers": true,
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"match_brackets": false,
+	"match_brackets_angle": false,
+	"match_brackets_braces": false,
+	"match_brackets_content": false,
+	"match_brackets_square": false,
+	"match_selection": true,
+	"match_tags": false,
+	"material_theme_accent_cyan": true,
+	"material_theme_accent_scrollbars": true,
+	"material_theme_compact_panel": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode" : false,
+	"material_theme_small_statusbar": true,
+	"material_theme_small_tab": false,
+	"material_theme_tabs_autowidth": true,
+	"overlay_scroll_bars": "enabled",
+	"preview_on_click": false,
+	"rulers":
+	[
+		79,
+		119
+	],
+	"save_on_focus_lost": true,
+	"scroll_past_end": true,
+	"scroll_speed": 0,
+	"shift_tab_unindent": true,
+	"show_full_path": true,
+	"show_in_minimap": false,
+	"show_panel_on_build": false,
+	"show_tab_close_buttons": true,
+	"show_unmatched": true,
+	"smart_indent": true,
+	"spell_check": false,
+	"tab_completion": true,
+	"tab_size": 2,
+	"theme": "Material-Theme.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"tree_animation_enabled": true,
+	"trim_automatic_white_space": true,
+	"trim_trailing_white_space_on_save": true,
+	"update_check": false,
+	"use_tab_stops": true,
+	"wide_caret": true,
+	"word_wrap": false,
+	"wrap_width": 80
+}
+```
+And `.editorconfig` which I use in my projects:
+```
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{py,rst,ini}]
+max_line_length = 119
+indent_size = 4
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+[*.json]
+insert_final_newline = ignore
+
+[*.min.js]
+indent_style = ignore
+insert_final_newline = ignore
+
+[*.java]
+indent_size = 4
+
+[*.js]
+trim_trailing_whitespace = false
+insert_final_newline = false
+```
