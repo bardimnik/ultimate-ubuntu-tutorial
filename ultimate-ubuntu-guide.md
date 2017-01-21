@@ -1036,7 +1036,10 @@ Let's tweak hardware graphic utilization. Open `chrome://flags/` page and set th
 - `#enable-fast-unload` = Enable
 - `#smooth-scrolling` = Enable
 - `#enable-gpu-rasterization` = Force Enable for all layers
+- `#lcd-text-aa` = Enable
+- `#enable-tcp-fast-open` = Enable
 - `#enable-zero-copy` = Enable
+- `#num-raster-threads` = 4
 
 Restart browser. 
-OK. Since now Google Chrome will try to use hardware GPU rendereing and even 1080p/60fps Youtube videos will play smooth and tear-free.
+OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smooth and tear-free.
