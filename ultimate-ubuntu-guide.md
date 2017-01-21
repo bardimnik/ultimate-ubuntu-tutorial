@@ -998,7 +998,7 @@ Run this command to enable RAW-format support and RAW previews in file manager:
 ```
 sudo apt install gimp-ufraw gnome-raw-thumbnailer ufraw ufraw-batch exiv2
 ```
-OK. Now you can preview RAWs and open them in Gimp. Also you can install dedicated RAW editor for example Darktable, Photivo, RawTherapee or even proprietary AfterShot Pro. But to be honest none of them can compete with Photoshop, Lightroom or legendary SilkyPix. All of them are suck. Sad but true.
+OK. Now you can preview RAWs and open them in Gimp. Also you can install dedicated RAW editor for example Darktable, Photivo, RawTherapee or even proprietary AfterShot Pro. But to be honest none of them can compete with Photoshop, Lightroom or legendary SilkyPix. All of them suck. Sad but true.
 
 ## Install and configure GIMP
 
@@ -1029,7 +1029,7 @@ Those additional packages will help you to avoid any possible problems with soun
 ## Configure Google Chrome with Intel Graphics
 
 > **N.B.!**  
-> - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 exec-line, because fulscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. Maybe in new versions we will have to enable it again.*
+> - *Do not set `--disable-gpu-driver-bug-workarounds` and `--enable-native-gpu-memory-buffers` in Chrome v55 exec-line, because fullscreen mode will glitch and Youtube videos will play with tearing. These options worked in previous versions but not now. Maybe in new versions we will have to enable it again.*
 
 Let's tweak hardware graphic utilization. Open `chrome://flags` page and set these parameters:
 - `#ignore-gpu-blacklist` = Enable
@@ -1043,11 +1043,11 @@ Let's tweak hardware graphic utilization. Open `chrome://flags` page and set the
 - `#num-raster-threads` = 4
 
 Restart browser. 
-OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smooth and without tearing.
+OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smoothly and without tearing.
 
 ## Install Sublime Text
 
-I am using Sublime Text 3 and I recommend you too. Vim is for aliens, Emacs is for fanatics, Geany is abandoned, Atom is slow and Brackets is from Adobe. So actually there is no choice if you want make money with your editor.  
+I am using Sublime Text 3 and I recommend it to you too. Vim is for aliens, Emacs is for fanatics, Geany is abandoned, Atom is slow and Brackets is from Adobe. So actually there is no choice if you want to make money with your editor.  
 The easiest way to install Sublime is to use this PPA:
 ```
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
@@ -1213,4 +1213,4 @@ indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
 ```
-Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this. Also read installation and usage docs for every package that you install and follow them. Do not blindly install all plugins in the world because they will slow down your editor.
+Do not forget to choose `gutter` theme when you will use some linters. Material theme has its own matching style for this. Also read installation and usage docs for every package that you install and follow them. Do not blindly install all plugins in the world because they will slow down your editor.
