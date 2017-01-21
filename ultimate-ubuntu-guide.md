@@ -1056,14 +1056,14 @@ sudo apt -y install sublime-text-installer
 ``` 
 OK. And now install Package Control from here - https://packagecontrol.io/installation  
 Then open Sublime Text 3, press Ctrl+Shift+P and install next start-point packages:
-- Alignment
-- All autocomplete
-- BracketHighlighter
-- EditorConfig
-- Material Theme
-- SideBarEnhancements
-- SublimeLinter (and linter-plugins for your tasks)
-- zzFile Icons
+- [Alignment](https://github.com/wbond/sublime_alignment)
+- [All autocomplete](https://github.com/alienhard/SublimeAllAutocomplete)
+- [BracketHighlighter](https://github.com/facelessuser/BracketHighlighter)
+- [EditorConfig](https://github.com/sindresorhus/editorconfig-sublime)
+- [Material Theme](https://github.com/equinusocio/material-theme)
+- [SideBarEnhancements](https://github.com/SideBarEnhancements-org/SideBarEnhancements)
+- [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) (and linter-plugins for your tasks)
+- [zzFile Icons](https://github.com/ihodev/sublime-file-icons)
 
 Restart Sublime Text.  
 Now we need to edit `Preferences.sublime-settings - User`:
