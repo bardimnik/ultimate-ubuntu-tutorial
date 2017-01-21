@@ -1213,4 +1213,4 @@ indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
 ```
-Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this. Also read installation and usage docs for every package that you install and follow them. Do not blindly install all plugins in the world.
+Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this. Also read installation and usage docs for every package that you install and follow them. Do not blindly install all plugins in the world because they will slow down your editor.
