@@ -1066,7 +1066,7 @@ Then open Sublime Text 3, press Ctrl+Shift+P and install next start-point packag
 - zzFile Icons
 
 Restart Sublime Text.  
-Now we need to edit `Preferences.sublime-settings`:
+Now we need to edit `Preferences.sublime-settings - User`:
 ```
 {
 	"always_show_minimap_viewport": true,
