@@ -1047,7 +1047,8 @@ OK. Since now Google Chrome will try to use hardware GPU rendereing all the time
 
 ## Install Sublime Text
 
-I am using Sublime Text 3. The easiest way to install it is to use this PPA:
+I am using Sublime Text 3 and I recommend you too. Vim is for aliens, Emacs is for fanatics, Geany is abandoned, Atom is slow and Brackets is from Adobe. So actually there is no choice if you want make money with your editor. 
+The easiest way to install it is to use this PPA:
 ```
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
 sudo apt update
