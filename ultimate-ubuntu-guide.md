@@ -24,7 +24,7 @@
 - [Install and configure GIMP](#install-and-configure-gimp)
 - [Install Skype](#install-skype)
 - [Configure Google Chrome for Intel HD](#configure-google-chrome-with-intel-graphics)
-- Install Sublime Text
+- [Install and configure Sublime Text](#install-sublime-text)
 
 ## Why I wrote this ~~another things to do~~ guide
 The main reason why I wrote this guide is because I need it as my own memo.  
@@ -1064,7 +1064,8 @@ Then open Sublime Text 3 and install next start-point packages:
 - SublimeLinter
 - zzFile Icons
 
-Restart Sublime Text. Here is my `Preferences.sublime-settings`:
+Restart Sublime Text.  
+Now we need to edit `Preferences.sublime-settings`:
 ```
 {
 	"always_show_minimap_viewport": true,
@@ -1211,3 +1212,4 @@ indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
 ```
+Do not forget to choose `gutter` theme when you will use some linters. Material theme has it's own matching style for this.
