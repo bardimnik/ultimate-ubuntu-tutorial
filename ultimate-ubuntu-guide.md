@@ -1042,4 +1042,4 @@ Let's tweak hardware graphic utilization. Open `chrome://flags/` page and set th
 - `#num-raster-threads` = 4
 
 Restart browser. 
-OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smooth and tear-free.
+OK. Since now Google Chrome will try to use hardware GPU rendereing all the time and even 1080p/60fps Youtube videos will play smooth and without tearing.
