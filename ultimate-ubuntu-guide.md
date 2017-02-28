@@ -158,6 +158,12 @@ You can do it with this command:
 sudo chattr +C /some_dir/
 ```
 Be carefull - letter `C` is capitalized in that command.
+> **N.B.!**  
+> - *If you prefer `ext4` file system use this config in `/etc/fstab`:*
+```
+UUID=some_UUID    /        ext4    nobarrier,data=writeback,noatime,nodiratime,errors=remount-ro    0   1
+UUID=some_UUID    /home    ext4    nobarrier,data=writeback,noatime,nodiratime,errors=remount-ro    0   2
+```
 
 ## Force automatic TRIM for SSD
 First of all check if your SSD supports TRIM feature. Run command:
