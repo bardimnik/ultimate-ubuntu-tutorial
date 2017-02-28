@@ -210,9 +210,17 @@ Section "Device"
     Option        "AccelMethod"    "sna"
     Option        "TearFree"       "true"
     Option        "DRI"            "3"
+    Option        "TripleBuffer"   "true"
 EndSection
 ```
-Save it and reboot.
+Save it and create another file `/etc/X11/xorg.conf.d/90-monitor.conf`: 
+```
+Section "Monitor"
+    Identifier    "<default monitor>"
+    DisplaySize   276 156    # In millimeters
+EndSection
+```
+Save all and reboot.
 
 Now check if it works by reading output of these commands:
 ```
